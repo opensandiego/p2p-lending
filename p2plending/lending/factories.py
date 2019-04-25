@@ -29,6 +29,14 @@ class ProfileFactory(factory.DjangoModelFactory):
     phone =  factory.Sequence(lambda n: '555-555-%04i' % n)
     notify_by = "email"
 
+class ItemFactory(factory.DjangoModelFactory):
+    class Meta:
+        model = Item    
+    guid = factory.Sequence(lambda n: 'GUID%08i' % n)
+    owner = factory.SubFactory(ProfileFactory)
+    status = "available"
+    date_added = now()
+
 class TitleFactory(factory.DjangoModelFactory):
     class Meta:
         model = Title
@@ -37,13 +45,6 @@ class TitleFactory(factory.DjangoModelFactory):
     description = factory.Sequence(lambda n: 'Description {0}'.format(n))
     cover_image = None
     meta_data = "{}"
+    item = factory.RelatedFactory(ItemFactory,"title")
 
-class ItemFactory(factory.DjangoModelFactory):
-    class Meta:
-        model = Item    
-    guid = factory.Sequence(lambda n: 'GUID%08i' % n)
-    title = factory.SubFactory(TitleFactory)
-    owner = factory.SubFactory(ProfileFactory)
-    status = "available"
-    date_added = now()
 
