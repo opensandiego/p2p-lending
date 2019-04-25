@@ -33,7 +33,7 @@ class Location(models.Model):
     lng = models.FloatField()
 
 class Profile(models.Model):
-    user = models.ForeignKey(User,on_delete=models.SET_NULL,null=True) 
+    user = models.OneToOneField(User,on_delete=models.SET_NULL,null=True) 
     preferred_language = models.CharField(max_length=16,choices=LANGUAGES,blank=True,null=True)  
     library_card = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
@@ -60,6 +60,9 @@ class Title(models.Model):
     description = models.TextField(blank=True)
     meta_data = models.TextField(blank=True)
 
+    def available_items(self):
+        return self.item_set.filter(status="available")
+
     def __str__(self):
         return "%s (%s - %s)" % (self.title,self.media_type,self.language)
    
@@ -70,12 +73,12 @@ class Item(models.Model):
     status = models.CharField(max_length=16,choices=ITEM_STATUS,default="available")
     date_added = models.DateTimeField(blank=True)
 
-    def save(self):
+    def save(self,*args,**kwargs):
         if not self.guid:
             self.guid = uuid.uuid4().hex
         if not self.date_added:
             self.date_added = now()
-        super(Item,self).save()
+        super(Item,self).save(*args,**kwargs)
 
     def __str__(self):
         return "%s (%s) [%s]" % (self.title, self.guid, self.status)

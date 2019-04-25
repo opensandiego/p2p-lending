@@ -48,6 +48,6 @@ admin.site.register(Loan,LoanAdmin)
 class LocationAdmin(admin.ModelAdmin):
     list_display = ("name","active_users")
 
-    def active_users(self):
-        return self.profile_set.filter(user__active=True).count()
+    def active_users(self,instance):
+        return instance.profile_set.filter(user__is_active=True).count()
 admin.site.register(Location,LocationAdmin)
