@@ -122,7 +122,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Include Frontend
-STATICFILES_DIRS = [os.path.join(BASE_DIR,'frontend')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR,'frontend','dist')]
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

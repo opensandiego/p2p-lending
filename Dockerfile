@@ -8,12 +8,11 @@ COPY . /code/
 
 FROM node AS npm_build
 COPY --from=base /code/ ./code
-WORKDIR /code/p2plending/lending/static/
+WORKDIR /code/p2plending/frontend/
 RUN npm install node-sass
 RUN npm install .
 RUN npm run build
 
 FROM base AS release
-COPY --from=npm_build /code/p2plending/lending/static/css/ /code/p2plending/lending/static/css
-COPY --from=npm_build /code/p2plending/lending/static/js/ /code/p2plending/lending/static/js
+COPY --from=npm_build /code/p2plending/frontend/dist/ /code/p2plending/frontend/dist
 
