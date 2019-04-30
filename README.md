@@ -1,67 +1,42 @@
 # Peer-to-Peer Lending
 
-[Join the chat on slack at **peer-to-peer-landing**](https://osd-slack-auto-invite.herokuapp.com/)
+## About
 
-## Table of contents
-- [Pitch](#section_pitch "Pitch")
-- [Goal](#section_goal "Goal")
-- [Data](#section_data "Data")
-- [Stack](#section_stack "Stack")
-- [Skills](#section_skills "Skills")
-- [Team](#section_team "team")
-- [Similar projects](#section_similar "Similar projects")
-- [Github](#section_github "Github")
-- [Participate](#section_participate "How to Participate")
+Peer to Peer lending is a web application actively being developed by [Open San Diego](https://opensandiego.org) in partnership with the [San Diego Linda Vista Library branch](https://www.sandiego.gov/public-library/locations/linda-vista-library) to facilitate community peer-to-peer lending. The goal is to help community members share books and media outside of the SD Library's collection (specifically foreign language books) with the help of the library. The Library staff will faciltate the loans with this application so that there is both trust and anonymity in the lending.
 
-### <a name="section_pitch"></a>Pitch
+Read more in the [Project Brief](PROJECT-BRIEF.md).
 
-The Linda Vista Library is looking to explore a Peer-to-Peer lending program, faciliated by the library. The goal is to provide patrons with access to harder to find books not in the broader San Diego collection, specifically foreign language books. The program will be managed by the Library staff, but they will need software to help them manage the catalog of available books in the community, as well as manage the request / loan / return process. This project will be the buildout of the software.
+## Status
 
-### <a name="section_goal"></a>Goal
+We are currently at the **Proof-of-Concept** stage, and hoping to get to **Minimum-Viable-Product** soon. For more information on contributing, please review the [Project Brief](PROJECT-BRIEF.md).
 
-- Prototype goal: Develop minimmum-viable-product for facilitating p2p lending at the Linda Vista Library 
-- Secondary goal: Create a system where users can find / request books online, and the library staff can just facilitate
-- Tertiary goal: Create a system that facilitates the intake of books and helps library staff manage new lenders / borrowers.
+## Setting Up
 
-### <a name="section_data"></a>Data
+The project files consist of a [Django 2 Application](https://djangoproject.com) in conjunction with a [React.js](https://reactjs.org) front-end. 
 
-- Worldcat.org - to help find meta data pertaining to books
-- SD Library Card Id - used as a "loose" connection to the broader SD Library program 
+The quickest way to get going is to use [Docker](https://docker.com):
 
-### <a name="section_stack"></a>Stack
+~~~~~
+> docker-compose up
+> open http://localhost:8000/
+~~~~~
 
-- [Framework - Django](https://djangoproject.com/ "Django")
-- [Database - Postgresql](https://www.postgresql.org "Postgresql")
-- [Frontend - React](https://reactjs.org/)
-- [Systems - Docker](https://www.docker.com/)
+**TODO: make docker-compose up auto-migrate db and possibly inject demo data**
 
-### <a name="section_skills"></a>Skills
+Alternatively, to work locally, you can create a virtual environment:
 
-- Backend Dev - Python / Django
-- Fronted Dev - Bootstrap / React
-- Frontend Design / UX / UI
-- Project Management
+~~~~~
+> virtualenv venv
+> source venv/bin/activate
+> pip install -r requirements.txt
+> cd p2plending
+> ./manage.py migrate
+> cd frontend
+> npm install .
+> npm run build
+> cd ..
+> ./manage.py runserver
+> open http://localhost:8000/
+~~~~~
 
-### <a name="section_team"></a>Team
 
-- [Nick Engmann](https://github.com/NickEngmann)
-- [Nikolaj Baer](https://github.com/nikolajbaer/)
-- [Jeffrey Davis - Linda Vista Library Branch Manager](https://www.sandiego.gov/public-library/locations/linda-vista-library)
-- We're looking for additional team members. Please reach out to us on #peer-to-peer-lending on opensandiego.slack.com
-
-### <a name="section_similar"></a>Similar projects and models
-
-- *List of similar projects or models or relevant resources*
-- TODO
-
-### <a name="section_github"></a>GitHub
-
-*Github Link*
-[https://github.com/opensandiego/](https://github.com/opensandiego/)
-
-- **Master** branch: master
-
-### <a name="section_participate"></a>How to Participate
-
-- Chat with us on the project channel *#peer-to-peer-lending*
-- Join our [meetups](http://www.meetup.com/Open-San-Diego) the 1st and 3rd Tuesdays every month.
