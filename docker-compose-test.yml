@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  test:
+    image: app
+    environment:
+        - DJANGO_SETTINGS_MODULE=p2plending.test_settings
+    working_dir: /code/p2plending/
+    command: python manage.py test
+    volumes:
+      - .:/code/
+

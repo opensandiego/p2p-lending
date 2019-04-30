@@ -10,6 +10,4 @@ class LendingTestCase(TestCase):
         #item = ItemFactory(title=title)
         #self.assertEqual(title.available_items().count(),1)  
        
-        import code
-        code.interact(local=locals()) 
     
