@@ -1,6 +1,6 @@
-# ** Peer-to-Peer Lending **
+# Peer-to-Peer Lending
 
-[![Join the chat on slack at **peer-to-peer-landing**](https://osd-slack-auto-invite.herokuapp.com/)]
+[Join the chat on slack at **peer-to-peer-landing**](https://osd-slack-auto-invite.herokuapp.com/)
 
 ## Table of contents
 - [Pitch](#section_pitch "Pitch")
