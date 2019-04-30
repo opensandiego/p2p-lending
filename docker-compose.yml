@@ -5,12 +5,26 @@ services:
     image: postgres
   web:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000 --settings=p2plending.docker_settings
+    image: app 
+    environment:
+        - DJANGO_SETTINGS_MODULE=p2plending.docker_settings
     working_dir: /code/p2plending/
+    command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code/
     ports:
       - "8000:8000"
+    depends_on:
+      - migration
+      - db
+  migration:
+    image: app
+    environment:
+        - DJANGO_SETTINGS_MODULE=p2plending.docker_settings
+    working_dir: /code/p2plending/
+    command: python manage.py migrate --noinput
+    volumes:
+      - .:/code/
     depends_on:
       - db
 
