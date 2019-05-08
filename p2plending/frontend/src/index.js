@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from "./app/App";
 
 import "./index.css";
 
-const title = 'LENDO';
 
 ReactDOM.render(
-  <div>{title}</div>,
-  document.getElementById('app')
+  <App />,
+  document.getElementById('root')
 );
 
 module.hot.accept();

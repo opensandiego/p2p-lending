@@ -11,3 +11,39 @@ h1 {
     font-size: 1.5em;
     font-weight: 500;
 }
+
+.App {
+    min-height: 100vh;
+}
+
+.header {
+  cursor: pointer;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.header .btn-member {
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 13px;
+  transition: 0.1s all ease-in-out;
+}
+.header .btn-member:hover {
+  color: rgba(0, 0, 0, 0.84);
+  text-decoration: none;
+}
+.flex-container {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-item {
+  text-align: center;
+
+}
