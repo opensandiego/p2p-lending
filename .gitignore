@@ -5,7 +5,7 @@ lib/
 .Python
 *.sqlite3
 p2plending/frontend/node_modules/
-p2plending/frontend/dist/
+p2plending/frontend/dist/main.js
 venv/
 
 .DS_Store

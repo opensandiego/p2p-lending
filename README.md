@@ -55,6 +55,16 @@ Alternatively, to work locally, you can create a virtual environment:
 > open http://localhost:8000/
 ~~~~~
 
+### Front End Developing
+
+To just run the front-end code
+~~~~~
+> cd frontend
+> npm install .
+> npm start
+> open http://localhost:8080/
+~~~~~
+
 Same applies about createsuperuser and /admin/. To run tests:
 
 `> ./manage.py test --settings=p2plending.test_settings`
