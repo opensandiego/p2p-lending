@@ -6,5 +6,6 @@ lib/
 *.sqlite3
 p2plending/frontend/node_modules/
 p2plending/frontend/dist/
+venv/
 
 .DS_Store
