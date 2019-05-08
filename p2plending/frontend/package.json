@@ -14,6 +14,9 @@
     "presets": [
       "@babel/preset-env",
       "@babel/preset-react"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties"
     ]
   },
   "devDependencies": {
@@ -30,8 +33,14 @@
     "webpack-dev-server": "^3.3.1"
   },
   "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "axios": "^0.18.0",
+    "classnames": "^2.2.6",
     "lodash": "^4.17.5",
+    "octicons": "^8.5.0",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-modal": "^3.8.1",
+    "react-router-dom": "^5.0.0"
   }
 }
