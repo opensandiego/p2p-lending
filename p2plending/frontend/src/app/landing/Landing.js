@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import SearchBar from "../../components/SearchBar";
 
+const config = require("../../../config/index");
+
+const title = config.title;
+
 class Titles extends Component {
   render() {
     return (
@@ -13,10 +17,10 @@ class Titles extends Component {
             <span role="img" aria-label="emoji" style={{fontSize: 50}}>
               📖
             </span>
-            <h2 className="m-0">Lendo</h2>
+            <h2 className="m-0">{ title }</h2>
             <div className="mx-auto" style={{ maxWidth: "500px" }}>
               <span>
-                Peer to Peer Book Exchange! Share and explore the books within your local community.{" "}
+                { title } is a Peer to Peer Book Exchange! Share and explore the books within your local community.{" "}
                 <span role="img" aria-label="Tada emoji">
                   📚
                 </span>

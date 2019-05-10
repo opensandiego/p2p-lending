@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 
 
-import Octicon from "../components/Octicon";
 import LoginModal from "./auth/LoginModal";
 
 

@@ -4,6 +4,9 @@ import Modal from "react-modal";
 
 import Octicon from "../../components/Octicon";
 
+const config = require("../../../config/index");
+
+const title = config.title;
 
 Modal.setAppElement("#root");
 
@@ -15,7 +18,7 @@ const LoginModal = ({ isOpen, onClose }) => (
     </button>
     <div className="py-5 px-4 my-2 mx-auto" style={{ maxWidth: "400px" }}>
       <div className="text-center mx-auto">
-        <h5 className="mb-1">Login to Lendo</h5>
+        <h5 className="mb-1">Login to { title }</h5>
         <p className="text-secondary font-weight-light">
           Sign in to save your progress.
         </p>
