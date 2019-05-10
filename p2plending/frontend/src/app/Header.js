@@ -26,7 +26,16 @@ class Header extends Component {
       <div className="header">
         <LoginModal isOpen={this.state.showModal} onClose={this.onCloseModal} />
         <div className="container container--full d-flex justify-content-between align-items-center py-2 w-100">
-          <div className="d-flex align-items-center"/>
+        <div className="d-flex align-items-center">
+              <Link
+                to="/"
+                className="d-flex align-items-center"
+              >
+                <span role="img" aria-label="emoji" style={{fontSize: 27}}>
+                  📖
+                </span>
+              </Link>
+          </div>
           <ul className="d-flex align-items-center p-0 m-0">
 
                 <li className="list-inline-item ml-2" key={1}>
