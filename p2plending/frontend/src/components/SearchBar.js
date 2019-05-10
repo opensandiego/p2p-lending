@@ -49,12 +49,13 @@ class SearchBar extends Component {
     const { content, searchString, isFocused, isLoading } = this.state;
     return (
       <form
-        className="mt-3 flex-item search border rounded d-flex align-items-center position-relative mr-2 p-2"
+        className="mt-3 flex-item search border rounded d-flex align-items-center position-relative p-2"
         ref={c => (this.searchbar = c)}
         onKeyPress={this.onSubmit}
         onFocus={() => this.input.focus()}
         onClick={() => this.input.focus()}
         tabIndex="0"
+        style = {{ maxWidth: "400px" }}
       >
         <Octicon name="search" className="d-flex align-items-center mr-2" fill="#a8a8a8" />
         <input
