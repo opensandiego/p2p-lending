@@ -30,6 +30,7 @@ h1 {
   color: rgba(0, 0, 0, 0.84);
   text-decoration: none;
 }
+
 .flex-container {
   height: 100%;
   padding: 0;
@@ -46,4 +47,91 @@ h1 {
 .flex-item {
   text-align: center;
 
+}
+
+.loginModal {
+  left: 0;
+  right: 0;
+  top: 20px;
+  bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+  padding: auto;
+  background-color: white;
+  border-radius: 4px;
+  position: absolute;
+  max-width: 600px;
+}
+
+.loginModal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.loginModal-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+}
+
+@media (min-width: 576px) {
+  .loginModal {
+    top: 200px;
+  }
+  .loginModal-button {
+    width: auto;
+  }
+}
+
+.loginModal-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  width: 100%;
+  padding: 0.5rem 1rem;
+}
+
+.loginPrompt {
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: #e4efff;
+  border-bottom: 1px solid #bbcae1;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  position: absolute;
+  color: #1b3e72;
+  font-size: 12px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.search {
+  outline: none;
+  cursor: pointer;
+}
+
+.search .search-input {
+  font-size: 13px;
+  width: 265px;
+  outline: none;
+}
+.search .search-overlay {
+  top: 40px;
+  left: 0;
+  right: 0;
+  font-size: 15px;
+  z-index: 100;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+.search-input::placeholder {
+  color: #a8a8a8;
 }
