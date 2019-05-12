@@ -1,12 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+const config = require("../../config/index");
+
+const title = config.title;
 
 const Footer = () => (
   <div className="bg-dark">
     <div className="container container--full d-flex flex-column flex-md-row align-items-center justify-content-between p-4">
       <div className="text-secondary d-flex flex-column">
-        <small className="font-weight-medium">Lendo © 2019</small>
+        <small className="font-weight-medium">{ title } © 2019</small>
       </div>
 
       <ul className="list-inline mb-0 text-center text-md-right">
