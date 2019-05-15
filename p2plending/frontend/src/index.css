@@ -135,3 +135,7 @@ h1 {
 .search-input::placeholder {
   color: #a8a8a8;
 }
+
+.browseLanguage {
+  width: 400px;
+}
