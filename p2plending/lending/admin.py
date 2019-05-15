@@ -25,9 +25,22 @@ class ItemInline(admin.TabularInline):
     raw_id_fields = ("owner",)
 
 class TitleAdmin(admin.ModelAdmin):
-    list_display = ("title","language","media_type","items")
+    list_display = ("title","language","media_type","items","available")
     list_filter = ("media_type","language")
     inlines = [ItemInline]
+    actions = ["process_next_request"]
+
+
+    def available(self,instance):
+        return instance.available_items().count()
+        
+    def process_next_request(self,request,queryset):
+        loans_created = []
+        for title in queryset:
+            loan = title.process_next_request()
+            if loan:
+                loans_created.append(loan)
+        self.message_user(request,"%i loans created for %i titles" % (len(loans_created),queryset.count()))
 
     def items(self,instance):
         return instance.item_set.exclude(status="unavailable").count()

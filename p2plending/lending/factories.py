@@ -13,7 +13,7 @@ class UserFactory(factory.DjangoModelFactory):
 class LocationFactory(factory.DjangoModelFactory):
     class Meta:
         model = Location
-    name = factory.Sequence(lambda n: 'user_{0}'.format(n))
+    name = factory.Sequence(lambda n: 'location_{0}'.format(n))
     lat = 32.7832636 
     lng = -117.1712191 
 

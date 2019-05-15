@@ -35,6 +35,9 @@ class Location(models.Model):
     lat = models.FloatField()
     lng = models.FloatField()
 
+    def __str__(self):
+        return self.name
+
 class Profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.SET_NULL,null=True) 
     preferred_language = models.CharField(max_length=16,choices=LANGUAGES,blank=True,null=True)  
@@ -163,3 +166,11 @@ class TitleRequest(models.Model):
     def cancel_request(self):
         self.status = "canceled"
         self.save()
+
+    def __str__(self):
+        return "%s requested by %s on %s (%s)" % (
+            self.title.title[:32],
+            self.requester.name,
+            self.request_date,
+            self.status
+        )
