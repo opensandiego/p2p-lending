@@ -78,7 +78,7 @@ h1 {
   right: 12px;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 813px) {
   .loginModal {
     top: 200px;
   }
