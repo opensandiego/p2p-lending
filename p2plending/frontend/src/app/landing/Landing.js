@@ -30,13 +30,13 @@ class Titles extends Component {
             </div>
           </div>
 
-          <div className="flex-container"> 
+          <div className="flex-container pt-2"> 
             <SearchBar />
           </div>
           <div className="mt-2">
             <BrowseByLanguage />
           </div>
-          <div className="mt-2">
+          <div className="mx-auto " style={{ maxWidth: "400px" }}>
             <CallToAction />
           </div>
         </div>
