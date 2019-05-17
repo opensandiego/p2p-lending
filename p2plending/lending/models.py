@@ -61,6 +61,8 @@ class Profile(models.Model):
 class Title(models.Model):
     language = models.CharField(max_length=16,choices=LANGUAGES,blank=True,null=True)  
     title = models.CharField(max_length=255)
+    author = models.CharField(max_length=255,blank=True,null=True)
+    publish_year = models.IntegerField(blank=True,null=True)
     cover_image = models.ImageField(null=True,upload_to='covers/%Y/%m/%d/',blank=True)
     media_type = models.CharField(max_length=8,choices=MEDIA_TYPES)
     description = models.TextField(blank=True)

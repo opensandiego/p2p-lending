@@ -25,8 +25,9 @@ class ItemInline(admin.TabularInline):
     raw_id_fields = ("owner",)
 
 class TitleAdmin(admin.ModelAdmin):
-    list_display = ("title","language","media_type","items","available")
+    list_display = ("title","author","publish_year","language","media_type","items","available")
     list_filter = ("media_type","language")
+    search_fields = ("title","author",)
     inlines = [ItemInline]
     actions = ["process_next_request"]
 
