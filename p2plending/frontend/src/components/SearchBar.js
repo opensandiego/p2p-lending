@@ -29,15 +29,18 @@ class SearchBar extends Component {
   onSubmit = e => {
     if (e.key === "Enter") {
       e.preventDefault();
-      const { content, searchString } = this.state;
-      if (content.length > 0) {
-        console.log("Submit search");
+      const { searchString } = this.state;
+      if (searchString.length > 0) {
+        this.props.history.push(`/search?${ searchString }`);
       }
     }
   };
 
   searchContent = debounce(value => {
-    console.log("searched content");
+    // api.searchContent(value).then(({ data }) => {
+    //   console.log(data);
+    //   this.setState({ content: data, isLoading: false });
+    // });
   }, 300);
 
   onBlur = e => {

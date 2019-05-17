@@ -37,10 +37,10 @@ class BrowseByLanguage extends Component {
                             {languages.length > 0 ? (
                                 <div className="row">
                                     {languages.map(item => (
-                                        <LanguageItem
-                                        key={item.id}
-                                        name={item.name}
-                                        number={item.number}
+                                        <LanguageItem 
+                                          key={item.id}
+                                          name={item.name}
+                                          number={item.number}
                                         />
                                     ))}
                                 </div>
