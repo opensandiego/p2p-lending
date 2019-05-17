@@ -1,5 +1,6 @@
 from django.test import TestCase
 from .factories import ProfileFactory,TitleFactory,ItemFactory
+from .models import Title
 
 class LendingTestCase(TestCase):
 
@@ -37,4 +38,5 @@ class LendingTestCase(TestCase):
         title_request = title.create_request(borrower)
         loan2 = title.process_next_request()
         self.assertEqual(loan2, None)
+
 
