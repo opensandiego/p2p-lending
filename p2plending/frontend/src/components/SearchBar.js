@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { debounce } from "lodash";
+import PropTypes from "prop-types";
 
 import * as api from "../app/backendCalls";
 import Octicon from "./Octicon";
@@ -12,7 +14,9 @@ class SearchBar extends Component {
     isFocused: false,
     isLoading: false,
   };
-
+  static propTypes = {
+    history: PropTypes.any.isRequired,
+  }
   componentDidMount() {
     this.searchContent("*");
   }

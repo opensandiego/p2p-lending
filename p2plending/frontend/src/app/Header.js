@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-
-
 import LoginModal from "./auth/LoginModal";
-
 
 class Header extends Component {
   state = {
@@ -19,7 +16,6 @@ class Header extends Component {
   };
 
   render() {
-    const isHomePage = this.props.location.pathname === "/";
 
     return (
       <div className="header">

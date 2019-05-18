@@ -14,7 +14,7 @@ const NotFound = () => (
         <code>404 Not Found</code>
       </h1>
       <p className="text-dark" style={{ fontWeight: "500" }}>
-        The page you were looking for doesn't exist.
+        The page you were looking for does not exist.
       </p>
       <span style={{ fontSize: "80px" }} role="img" aria-label="embarrassed emoji">
         😅
