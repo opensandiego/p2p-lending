@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
 import axios from "axios";
 import queryString from "query-string";
 

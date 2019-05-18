@@ -1,10 +1,17 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 class LanguageItem extends Component {
+  
+  static propTypes = {
+    name: PropTypes.string.isRequired,
+    key: PropTypes.number.isRequired,
+    number: PropTypes.number.isRequired,
+  }
 
   render() {
-
+    
     return (
       <div className="deck-item col-4 col-sm-3 col-md-4 col-lg-3 d-flex" key={this.props.key}>
         ⚈ <Link

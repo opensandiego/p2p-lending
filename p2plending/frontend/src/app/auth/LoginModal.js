@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import Modal from "react-modal";
 
@@ -33,7 +34,7 @@ const LoginModal = ({ isOpen, onClose }) => (
       </div>
       <div className="text-center mt-2" style={{ opacity: 0.5 }}>
         <small className="text-muted">
-          We'll never post to your account without your permission.
+          We will never post to your account without your permission.
         </small>
       </div>
     </div>

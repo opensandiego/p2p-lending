@@ -10,4 +10,5 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
+// eslint-disable-next-line no-undef
 module.hot.accept();
