@@ -6,7 +6,7 @@ class LanguageItem extends Component {
   render() {
 
     return (
-      <div className="deck-item col-12 col-sm-6 col-md-4 col-lg-3 d-flex">
+      <div className="deck-item col-4 col-sm-3 col-md-4 col-lg-3 d-flex" key={this.props.key}>
         ⚈ <Link
           to={`/search/${this.props.name.toString().toLowerCase()}`}
           className="d-flex flex-column justify-content-between text-dark mb-1 p-1 w-50 position-relative"

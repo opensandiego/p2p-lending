@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import TitlesResults from "./titles/TitlesResults";
 
 import Landing from "./landing/Landing";
 import Footer from "./Footer";
@@ -18,7 +19,9 @@ class App extends Component {
             <Route path="/" component={ScrollToTop} />
             <Switch>
               <Route exact path="/" component={Landing} />
-              <Route exact path="*" component={NotFound} />
+              <Route exact path="/search" exact component={TitlesResults} />
+              <Route exact path="/search/:languageID" exact component={TitlesResults} />
+              <Route component={NotFound} />
             </Switch>
           </div>
           <Footer />
