@@ -1,25 +1,31 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import LoginModal from "./auth/LoginModal";
+import SignupModal from "./auth/SignupModal";
 
 class Header extends Component {
   state = {
-    showModal: false,
-    content: [],
-    isLoading: true,
+    showLoginModal: false,
+    showSignupModal: false
   };
 
-  onOpenModal = () => this.setState({ showModal: true });
+  onOpenLoginModal = () => this.setState({ showLoginModal: true });
+  onOpenSignupModal = () => this.setState({ showSignupModal: true });
 
-  onCloseModal = () => {
-    this.setState({ showModal: false });
+  onCloseLoginModal = () => {
+    this.setState({ showLoginModal: false });
+  };
+
+  onCloseSignupModal = () => {
+    this.setState({ showSignupModal: false });
   };
 
   render() {
 
     return (
       <div className="header">
-        <LoginModal isOpen={this.state.showModal} onClose={this.onCloseModal} />
+        <LoginModal isOpen={this.state.showLoginModal} onClose={this.onCloseLoginModal} />
+        <SignupModal isOpen={this.state.showSignupModal} onClose={this.onCloseSignupModal} />
         <div className="container container--full d-flex justify-content-between align-items-center py-2 w-100">
         <div className="d-flex align-items-center">
               <Link
@@ -37,7 +43,7 @@ class Header extends Component {
                   <button
                     className="btn btn-sm btn-outline-dark d-flex px-3 py-2"
                     onClick={() => {
-                      this.onOpenModal();
+                      this.onOpenLoginModal();
                     }}
                   >
                     <small className="font-weight-bold">LOG IN</small>
@@ -47,7 +53,7 @@ class Header extends Component {
                   <button
                     className="btn btn-sm btn-dark d-flex px-3 py-2"
                     onClick={() => { 
-                      this.onOpenModal();
+                      this.onOpenSignupModal();
                     }}
                   >
                     <small className="font-weight-bold">SIGN UP</small>
