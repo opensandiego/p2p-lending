@@ -37,9 +37,14 @@ To run tests, you can do:
 > docker-compose -f docker-compose-test.yaml up
 ~~~~~
 
-## Setting Up - Local 
+## Developing Locally
 
-Alternatively, to work locally, you can create a virtual environment:
+Alternatively, to work locally, you can spawn both the frontend and backend seperately.
+
+
+### Back End Developing
+
+To run the backend you are going to need to create a virtual environment
 
 ~~~~~
 > virtualenv venv
@@ -52,20 +57,23 @@ Alternatively, to work locally, you can create a virtual environment:
 > npm run build
 > cd ..
 > ./manage.py runserver
-> open http://localhost:8000/
+~~~~~
+
+You can also generate backend test data by running the following command:
+
+~~~~~
+> ./manage.py generate_test_data 100
 ~~~~~
 
 ### Front End Developing
 
-To just run the front-end code
+To get a responsive frontend development environment on the frontend, run the following commands
+
 ~~~~~
-> cd frontend
+> cd p2plending/frontend
 > npm install .
-> npm start
+> npm run start
 > open http://localhost:8080/
 ~~~~~
 
-Same applies about createsuperuser and /admin/. To run tests:
-
-`> ./manage.py test --settings=p2plending.test_settings`
 
