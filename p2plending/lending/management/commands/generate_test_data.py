@@ -1,5 +1,6 @@
 from django.core.management.base import BaseCommand, CommandError
 from lending.factories import TitleFactory
+from lending.factories import LocationFactory
 from lending.models import Title
 from django.conf import settings
 import requests
