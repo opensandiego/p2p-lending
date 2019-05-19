@@ -51,7 +51,7 @@ class Header extends Component {
                 </li>
                 <li className="list-inline-item ml-1" key={2}>
                   <button
-                    className="btn btn-sm btn-dark d-flex px-3 py-2"
+                    className="btn btn-sm btn-primary d-flex px-3 py-2"
                     onClick={() => { 
                       this.onOpenSignupModal();
                     }}
