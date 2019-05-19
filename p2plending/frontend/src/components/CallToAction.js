@@ -28,11 +28,6 @@ class CallToAction extends Component {
           </div>
         </div>
         <div className="row">
-          {/* <div className="col">
-            <span style={{ fontSize: "40px" }} role="img" aria-label="embarrassed emoji">
-              🔔
-            </span>
-          </div> */}
           <div className="col">
             <button  
               className="btn btn-md btn-primary my-3"
@@ -44,9 +39,6 @@ class CallToAction extends Component {
             </button>
           </div>
         </div>
-        {/* <div className="row justify-content-md-center my-2">
-
-        </div> */}
       </div>
     );
   }
