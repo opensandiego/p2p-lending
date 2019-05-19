@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import Modal from "react-modal";
-
+import { Link, withRouter } from "react-router-dom";
 
 import Octicon from "../../components/Octicon";
 
@@ -17,28 +17,36 @@ const LoginModal = ({ isOpen, onClose }) => (
     <button className="loginModal-close btn btn-reset p-2" onClick={onClose}>
       <Octicon name="x" />
     </button>
-    <div className="py-5 px-4 my-2 mx-auto" style={{ maxWidth: "400px" }}>
-      <div className="text-center mx-auto">
-        <h5 className="mb-1">Login to { title }</h5>
-        <p className="text-secondary font-weight-light">
-          Sign in to save your progress.
-        </p>
-      </div>
-      <div className="d-flex justify-content-center mt-4">
-        <a
-          className="loginModal-button btn btn-sm btn-outline-dark"
-          href="http:google.com/"
-        >
-          <small className="font-weight-bold">Log in</small>
-        </a>
-      </div>
-      <div className="text-center mt-2" style={{ opacity: 0.5 }}>
-        <small className="text-muted">
-          We will never post to your account without your permission.
-        </small>
+    <div className="container">
+      <div className="py-5 px-4 my-2 mx-auto" style={{ maxWidth: "400px" }}>
+        <div className="text-center mx-auto">
+          <h5 className="mb-1">Login to { title }</h5>
+          <p className="text-secondary font-weight-light">
+            Sign in to save your progress.
+          </p>
+        </div>
+        <div className="row justify-content-md-center">
+
+              <button
+                className="btn btn-sm btn-success d-flex px-3 py-2"
+              >
+                <small className="font-weight-bold">LOG IN</small>
+              </button>
+ 
+        </div>
+        <div className="text-center mt-2" style={{ opacity: 0.5 }}>
+          <Link
+            to="/privacy"
+            className="d-flex align-items-center"
+          >
+          <small>
+            We will never post to your account without your permission.
+          </small>
+          </Link>
+        </div>
       </div>
     </div>
   </Modal>
 );
 
-export default LoginModal;
+export default withRouter(LoginModal);
