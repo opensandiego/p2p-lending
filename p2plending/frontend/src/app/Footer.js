@@ -16,7 +16,7 @@ const Footer = () => (
         
         <li className="list-inline-item">
           <small>
-            <Link to="/">
+            <Link to="/about">
               About
             </Link>
           </small>
