@@ -59,6 +59,7 @@ class Profile(models.Model):
         return self.titlerequest_set.filter(status="requested")
 
 class Title(models.Model):
+    id = models.AutoField(primary_key=True)
     language = models.CharField(max_length=16,choices=LANGUAGES,blank=True,null=True)  
     title = models.CharField(max_length=255)
     author = models.CharField(max_length=255,blank=True,null=True)

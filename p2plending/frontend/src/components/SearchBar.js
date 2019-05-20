@@ -1,24 +1,28 @@
 /* eslint-disable no-unused-vars */
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { debounce } from "lodash";
 import PropTypes from "prop-types";
-
+import queryString from "query-string";
 import * as api from "../app/backendCalls";
 import Octicon from "./Octicon";
 
 class SearchBar extends Component {
   state = {
     content: [],
-    searchString: "",
+    searchString: this.props.value,
     isFocused: false,
     isLoading: false,
   };
+  
   static propTypes = {
     history: PropTypes.any.isRequired,
+    value: PropTypes.string
   }
+
   componentDidMount() {
     this.searchContent("*");
+    
   }
 
   componentWillUnmount() {
@@ -41,10 +45,9 @@ class SearchBar extends Component {
   };
 
   searchContent = debounce(value => {
-    // api.searchContent(value).then(({ data }) => {
-    //   console.log(data);
-    //   this.setState({ content: data, isLoading: false });
-    // });
+    api.searchContentTitles(value).then(({ data }) => {
+      this.setState({ content: data, isLoading: false });
+    });
   }, 300);
 
   onBlur = e => {
@@ -54,6 +57,7 @@ class SearchBar extends Component {
 
   render() {
     const { content, searchString, isFocused, isLoading } = this.state;
+
     return (
       <form
         className="mt-3 flex-item search border rounded d-flex align-items-center position-relative p-2"
@@ -75,6 +79,32 @@ class SearchBar extends Component {
           className="search-input"
           placeholder="Search for titles or topics..."
         />
+          {isFocused && (
+            <div className="search-overlay position-absolute bg-white rounded border border-muted">
+              {isLoading && (
+                <div className="py-2 px-3 text-muted">
+                  <i className="fas fa-spinner fa-spin mr-1" />
+                  <span>Searching for Books...</span>
+                </div>
+              )}
+              {!isLoading &&
+                content.length > 0 && (
+                  <div className="text-dark d-flex flex-column py-2">
+                    {content.slice(0, 6).map(el => (
+                      <Link to={`/titles/${el.id}`} className="py-2 px-3 text-dark" key={el.id}>
+                        {el.title}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              {!isLoading &&
+                content.length === 0 && (
+                  <div className="py-2 px-3 text-muted">
+                    No titles found matching {searchString}
+                  </div>
+                )}
+            </div>
+          )}
       </form>
     );
   }

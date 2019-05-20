@@ -10,11 +10,10 @@ const title = config.title;
 class Titles extends Component {
   render() {
     return (
-        <div id="container p-4 my-5">
+        <div id="container p-4 my-3">
 
           <div
-            className="opening-blurb border rounded p-4 text-center "
-            style={{ borderColor: "#e8e8e8" }}
+            className="opening-blurb border rounded p-4 text-center text-white bg-dark"
           >
             <span role="img" aria-label="emoji" style={{fontSize: 50}}>
               📖
@@ -23,8 +22,8 @@ class Titles extends Component {
             <div className="mx-auto" style={{ maxWidth: "500px" }}>
               <span>
                 { title } is a Peer to Peer Book Exchange! Share and explore the books within your local community.{" "}
-                <span role="img" aria-label="Tada emoji">
-                  📚
+                <span role="img" aria-label="Globex emoji">
+                  🌎
                 </span>
               </span>
             </div>
@@ -36,8 +35,13 @@ class Titles extends Component {
           <div className="mt-2">
             <BrowseByLanguage />
           </div>
-          <div className="mx-auto " style={{ maxWidth: "400px" }}>
-            <CallToAction />
+          <div
+            className="opening-blurb border rounded p-3 my-5 text-center text-white bg-secondary "
+            style={{ borderBottom: "1px solid #e8e8e8" }}
+          >
+            <div className="mx-auto " style={{ maxWidth: "400px" }}>
+              <CallToAction />
+            </div>
           </div>
         </div>
     );
