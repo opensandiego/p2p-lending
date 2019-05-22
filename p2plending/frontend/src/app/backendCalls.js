@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 import axios from "axios";
 import queryString from "query-string";
@@ -39,7 +38,10 @@ export const fetchAllTitles = () => {
     return axios.get("/api/v1/titles");
 }
 
-export const searchContent = search => {
-    // return axios.get(`/api/search?${queryString.stringify({ text: search })}`);
-    console.log("this is where we would search the backend")
+export const fetchContentTitle = id => {
+    return axios.get(`/api/v1/titles/${ id }`);
+};
+
+export const searchContentTitles = search => {
+    return axios.get(`/api/v1/titles/?${queryString.stringify({ search })}`);
 };

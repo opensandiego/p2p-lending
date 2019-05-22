@@ -5,7 +5,7 @@ from .models import Location,Profile,Title,Item,Loan,TitleRequest
 class TitleSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Title
-        fields = ('title','author','publish_year','language','cover_image','media_type','description')
+        fields = ('id', 'title','author','publish_year','language','cover_image','media_type','description')
 
 class TitleDetailSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
