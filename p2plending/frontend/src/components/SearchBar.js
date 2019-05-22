@@ -10,19 +10,13 @@ import Octicon from "./Octicon";
 class SearchBar extends Component {
   state = {
     content: [],
-    searchString: this.props.value,
+    searchString: "",
     isFocused: false,
     isLoading: false,
   };
   
   static propTypes = {
     history: PropTypes.any.isRequired,
-    value: PropTypes.string
-  }
-
-  componentDidMount() {
-    this.searchContent("*");
-    
   }
 
   componentWillUnmount() {

@@ -1,15 +1,15 @@
 /* eslint-disable no-console */
 import React, { Component } from "react";
-import SearchBar from "../../components/SearchBar";
 import queryString from "query-string";
 
-class TitlesSpecific extends Component {
+class TitleIndividual extends Component {
   state = {
-    searchString: ""
+    searchString: "",
+    title: []
   }
   componentDidMount(){
     // eslint-disable-next-line react/prop-types
-    const values = queryString.parse(this.props.location.search)
+    const values = queryString.parse(this.props.location.titles)
 
     if (values != undefined ) {
       this.setState({ searchString: Object.keys(values)[0] })
@@ -21,12 +21,12 @@ class TitlesSpecific extends Component {
         <div id="container p-4 my-5">
 
           <div
-            className="opening-blurb border rounded p-4 text-center text-white bg-primary"
+            className="opening-blurb border rounded p-4 text-center text-white bg-success"
           >
             <span role="img" aria-label="emoji" style={{fontSize: 50}}>
               📖
             </span>
-            <h2 className="m-0">Specific Title Results Page</h2>
+            <h2 className="m-0">Specific Title Results Page for { searchString }</h2>
             <div className="mx-auto" style={{ maxWidth: "500px" }}>
 
             </div>
@@ -37,4 +37,4 @@ class TitlesSpecific extends Component {
   }
 }
 
-export default TitlesSpecific;
+export default TitleIndividual;
