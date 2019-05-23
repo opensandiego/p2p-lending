@@ -13,7 +13,7 @@ class Titles extends Component {
         <div id="container p-4 my-3">
 
           <div
-            className="opening-blurb border rounded p-4 text-center text-white bg-dark"
+            className="opening-blurb border rounded p-4 text-center text-white bg-info"
           >
             <span role="img" aria-label="emoji" style={{fontSize: 50}}>
               📖
