@@ -9,7 +9,7 @@ const absTopLeft = {top: 70, left: 10}
 function About() {
   return (
     <div id="container p-4 my-3">
-      <div className="text-center p-4 text-white bg-info" >
+      <div className="text-center rounded p-4 text-white bg-info" >
         <Link to="/" className="btn btn-outline-dark btn-sm position-absolute border bg-info" style={absTopLeft}>
             <i className="fa fa-arrow-circle-left"></i>
             &nbsp; Back
