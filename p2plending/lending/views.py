@@ -15,7 +15,7 @@ class PublicTitleViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = TitleSerializer
     detail_serializer_class = TitleDetailSerializer
     filter_backends = (DjangoFilterBackend,filters.SearchFilter)
-    filterset_fields = ('author','language',)
+    filterset_fields = ('author','language','id')
     search_fields = ('title','author')
     # TODO add custom Available and Available-At availability & location filter
 
