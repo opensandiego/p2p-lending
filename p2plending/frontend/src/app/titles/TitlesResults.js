@@ -1,13 +1,14 @@
 /* eslint-disable no-console */
 import React, { Component } from "react";
 import SearchBar from "../../components/SearchBar";
-import queryString from "query-string";
 import * as api from "../backendCalls";
 import TitleItem from "./TitleItem";
 import { withRouter } from "react-router-dom";
 //Your initialization
 
 class TitlesResults extends Component {
+  static defaultProps = { match: { params: {} } };
+
   state = {
     searchString: "",
     titles: []
@@ -15,11 +16,10 @@ class TitlesResults extends Component {
   
   componentDidMount(){
     // eslint-disable-next-line react/prop-types
-    const values = queryString.parse(this.props.location.search)
-
-    if (values != undefined ) {
-      api.searchContentTitles(Object.keys(values)[0]).then(({ data }) => {
-        this.setState({ titles: data, searchString: Object.keys(values)[0]  });
+    const { params } = this.props.match;
+    if (params.searchTerm != undefined ) {
+      api.searchContentTitles(params.searchTerm).then(({ data }) => {
+        this.setState({ titles: data, searchString: params.searchTerm  });
       });
     }
   }
