@@ -10,36 +10,11 @@ Read more in the [Project Brief](PROJECT-BRIEF.md).
 
 We are currently at the **Proof-of-Concept** stage, and hoping to get to **Minimum-Viable-Product** soon. For more information on contributing, please review the [Project Brief](PROJECT-BRIEF.md).
 
-## Setting Up - Docker
-
 The project files consist of a [Django 2 Application](https://djangoproject.com) in conjunction with a [React.js](https://reactjs.org) front-end. 
-
-The quickest way to get going is to use [Docker](https://docker.com):
-
-~~~~~
-> docker-compose up
-~~~~~
-
-This will give you a running app on http://localhost:8000, but no admin user or data. To create the admin user, run:
-
-~~~~~
-> docker-compose run web python manage.py createsuperuser
-> docker-compose up
-~~~~~
-
-You can then access the admin interface at http://localhost:8000/admin/
-
-### Docker Testing
-
-To run tests, you can do:
-
-~~~~~
-> docker-compose -f docker-compose-test.yaml up
-~~~~~
 
 ## Developing Locally
 
-Alternatively, to work locally, you can spawn both the frontend and backend seperately.
+To work locally, you can spawn both the frontend and backend seperately.
 
 
 ### Back End Developing
@@ -65,6 +40,12 @@ You can also generate backend test data by running the following command:
 > ./manage.py generate_test_data 100
 ~~~~~
 
+You can also create a superuser account to manage the backend
+
+~~~~~
+> ./manage.py createsuperuser
+~~~~~
+
 ### Front End Developing
 
 To get a responsive frontend development environment on the frontend, run the following commands
@@ -76,4 +57,27 @@ To get a responsive frontend development environment on the frontend, run the fo
 > open http://localhost:8080/
 ~~~~~
 
+## Setting Up - Docker
 
+Alternatively, the quickest way to get going is to use [Docker](https://docker.com):
+
+~~~~~
+> docker-compose up
+~~~~~
+
+This will give you a running app on http://localhost:8000, but no admin user or data. To create the admin user, run:
+
+~~~~~
+> docker-compose run web python manage.py createsuperuser
+> docker-compose up
+~~~~~
+
+You can then access the admin interface at http://localhost:8000/admin/
+
+### Docker Testing
+
+To run tests, you can do:
+
+~~~~~
+> docker-compose -f docker-compose-test.yaml up
+~~~~~
