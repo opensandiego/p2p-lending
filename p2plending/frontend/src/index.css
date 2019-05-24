@@ -143,6 +143,9 @@ h1 {
 .title-item {
   height: 350px;
 }
+.title-item-individual {
+  height: 500px;
+}
 .title-item .item-link {
   border: 1px solid #e8e8e8;
   justify-content: center;
@@ -151,12 +154,12 @@ h1 {
 .title-item .item-link:hover {
   text-decoration: none;
 }
-.title-item .text-secondary {
+.title-item .title-item-individual .text-secondary {
   color: #9b9b9b;
   line-height: 1.25em;
   font-size: 0.85em;
 }
-.title-item .title-image {
+.title-item .title-item-individual .title-image {
   background: #f1f1f1;
   width: 100px;
   height: 125px;
