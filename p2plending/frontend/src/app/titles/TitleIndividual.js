@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import * as api from "../backendCalls";
 import SearchBar from "../../components/SearchBar";
-import { Link }  from "react-router-dom";
+import { withRouter }  from "react-router-dom";
 import LoginModal from "../auth/LoginModal";
 import SignupModal from "../auth/SignupModal";
 import CallToAction from "../../components/CallToAction";
@@ -25,6 +25,12 @@ class TitleIndividual extends Component {
   onCloseSignupModal = () => {
     this.setState({ showSignupModal: false });
   };
+
+  goBack = () => {
+    // eslint-disable-next-line react/prop-types
+    this.props.history.goBack();
+  };
+
 
   componentDidMount(){
     // eslint-disable-next-line react/prop-types
@@ -134,13 +140,16 @@ class TitleIndividual extends Component {
         <div className="flex-container ">
           <div className="row">
             <div className="col"> 
-              <Link
+              <button
                 to="/"
                 className="btn btn-outline-dark m-2"
+                onClick={() => {
+                  this.goBack();
+                }}
               >
                 <i className="fa fa-arrow-circle-left mr-1"></i>
                 {''} Back
-              </Link>
+              </button>
             </div>
             <div className="col"> 
               <button
@@ -167,4 +176,4 @@ class TitleIndividual extends Component {
   }
 }
 
-export default TitleIndividual;
+export default withRouter(TitleIndividual);
