@@ -33,7 +33,7 @@ class SearchBar extends Component {
       e.preventDefault();
       const { searchString } = this.state;
       if (searchString.length > 0) {
-        this.props.history.push(`/search?${ searchString }`);
+        this.props.history.push(`/search/${ searchString }`);
       }
     }
   };
