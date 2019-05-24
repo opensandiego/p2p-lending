@@ -1,13 +1,21 @@
 import React, { Component } from "react";
 import overview from '../../assets/p2pOverviewDiagram.gif';
-
+import { Link } from "react-router-dom";
 
 
 function About() {
   return (
     <div className="container p-4 my-5">
      
-      <h1 className="display-4 text-center">Welcome <a class="btn btn-outline-dark" href="/" role="button">Back <i class="fa fa-arrow-circle-left"></i></a></h1>
+      <h1 className="display-4 text-center">Welcome 
+        <Link
+          to="/"
+          className="btn btn-outline-dark"
+        >
+          <i className="fa fa-arrow-circle-left"></i>
+          Back
+        </Link>
+      </h1>
       <dl>
         <dt>Overview:</dt>
         <dd>- The P2P Library Exchange facilitates a way for Lenders to securely loan their books and other media to people who are interested in borowing these books and other media. The local library along with it's staff provides a means to safely and securley accomplih this goal as shown in the following diagram. </dd>
