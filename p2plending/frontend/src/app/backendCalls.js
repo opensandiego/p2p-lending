@@ -39,7 +39,7 @@ export const fetchAllTitles = () => {
 }
 
 export const fetchContentTitle = id => {
-    return axios.get(`/api/v1/titles/${ id }`);
+    return axios.get(`/api/v1/titles/?${queryString.stringify({ id })}`);
 };
 
 export const searchContentTitles = search => {
