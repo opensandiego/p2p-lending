@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { debounce } from "lodash";
 import PropTypes from "prop-types";
-import queryString from "query-string";
 import * as api from "../app/backendCalls";
 import Octicon from "./Octicon";
 
@@ -16,7 +15,7 @@ class SearchBar extends Component {
   };
   
   static propTypes = {
-    history: PropTypes.any.isRequired,
+    history: PropTypes.object,
   }
 
   componentWillUnmount() {

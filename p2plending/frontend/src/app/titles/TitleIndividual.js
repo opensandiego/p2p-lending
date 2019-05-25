@@ -141,7 +141,6 @@ class TitleIndividual extends Component {
           <div className="row">
             <div className="col"> 
               <button
-                to="/"
                 className="btn btn-outline-dark m-2"
                 onClick={() => {
                   this.goBack();
