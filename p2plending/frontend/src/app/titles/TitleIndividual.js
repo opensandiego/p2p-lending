@@ -61,7 +61,7 @@ class TitleIndividual extends Component {
         </div>
         <div className="title-item-individual container my-3 d-flex mb-3 justify-content-md-center">
           <div 
-            className="row item-link border bg-white rounded pb-5 w-100 text-center mx-auto"
+            className="row item-link border bg-white rounded pb-5 w-100 text-center mx-auto position-relative"
             style= {{ maxWidth: "600px"}}
             >
             <div className="col-md-6">
