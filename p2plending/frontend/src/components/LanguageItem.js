@@ -40,7 +40,7 @@ class LanguageItem extends Component {
         >
           <div style={{ textDecoration: "underline" }}>
           <img alt={this.props.name} height="15" width="15" src={this.getFlagEmoji(this.props.name)} /> 
-             {this.props.name}{" "}({ this.props.number })
+             <scan style={{paddingLeft: 5}}>{this.props.name}{" "}({ this.props.number })</scan>
           </div>
         </Link>
       </div>
