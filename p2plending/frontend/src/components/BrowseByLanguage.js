@@ -28,10 +28,10 @@ class BrowseByLanguage extends Component {
     const { languages } = this.state;
       return (
         <div className="container">
-          <div className="row d-flex align-item-center position-relative pt-3 mx-auto" style={{ maxWidth:"350px" }}>
+          <div className="row d-flex align-item-center position-relative pt-3 mx-auto" style={{ maxWidth:"500px" }}>
             <div className="col-xs-6">
               <h4>Browse By Language:</h4>
-                <div className="border rounded mx-auto" style={{ maxWidth:"350px" }}>
+                <div className="border rounded mx-auto" style={{ maxWidth:"500px" }}>
                     <div className="container container--full px-2 my-1">
                         <div className="d-flex align-items-center justify-content-between mb-1" />
                         {languages.length > 1 ? (
