@@ -1,6 +1,6 @@
 from django.test import TestCase
 from .factories import ProfileFactory,TitleFactory,ItemFactory
-from .models import Title
+from .models import Title,Item
 
 class LendingTestCase(TestCase):
 
@@ -39,4 +39,30 @@ class LendingTestCase(TestCase):
         loan2 = title.process_next_request()
         self.assertEqual(loan2, None)
 
+    def test_languages_available(self):
+        title = TitleFactory.create_batch(5) 
+        langs = Title.objects.available_languages()
+
+        for l in langs:
+            self.assertEqual(
+                Title.objects.filter(language=l["language"]).count(),
+                l["count"]
+            )
+
+    def test_lending_items(self):
+        profile = ProfileFactory()
+        titles = TitleFactory.create_batch(5)
+        Item.objects.all().update(status='available',owner=profile)
+        items = Item.objects.all()
+        items[0].status = 'reserved'
+        items[0].save() 
+        items[1].status = 'unavailable'
+        items[1].save()
+        item_counts = profile.lender_items_by_status()
+
+        expected = {"unavailable":1,"reserved":1}
+        for ic in item_counts:
+            if ic["status"] in expected:
+                self.assertEqual(expected[ic["status"]],ic["count"])
+            self.assertEqual(ic["count"],Item.objects.filter(status="available").count())
 

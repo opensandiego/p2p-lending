@@ -2,10 +2,12 @@ from django.shortcuts import render
 from rest_framework import viewsets,generics,filters
 from rest_framework.permissions import IsAuthenticated,AllowAny
 from rest_framework.decorators import action
+from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import TitleSerializer, LocationSerializer, TitleDetailSerializer
 from .models import Title, Location
 from django_filters.rest_framework import DjangoFilterBackend
+from django.conf.global_settings import LANGUAGES 
 
 class PublicTitleViewSet(viewsets.ReadOnlyModelViewSet):
     '''
@@ -24,10 +26,15 @@ class PublicTitleViewSet(viewsets.ReadOnlyModelViewSet):
             return self.detail_serializer_class
         return self.serializer_class
 
+
 class LocationViewSet(viewsets.ModelViewSet):
     '''
     API Endpoint to view all available locations
     '''
     queryset = Location.objects.all()
     serializer_class = LocationSerializer
+
+class LanguagesViewSet(viewsets.GenericViewSet):
+    def list(self, request, format=None):
+        return Response(Title.objects.available_languages())
 

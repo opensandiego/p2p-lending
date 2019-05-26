@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'lending',
     'rest_framework',
     'django_filters',
+    'rest_framework.authtoken',
+    'rest_auth',
 ]
 
 MIDDLEWARE = [

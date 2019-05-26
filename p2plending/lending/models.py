@@ -55,8 +55,28 @@ class Profile(models.Model):
     def items_on_loan(self):
         return self.loan_set.filter(status="on-loan")
 
+    def items_available_for_pickup(self):
+        return self.loan_set.filter(status="on-loan")
+
     def titles_requested(self):
         return self.titlerequest_set.filter(status="requested")
+
+    def lender_items(self):
+        return self.item_set.all()
+
+    def lender_items_by_status(self):
+        '''Returns a dict of count of lender items by current status'''
+        return self.lender_items().values("status").annotate(count=models.Count("*"))
+
+class TitleManager(models.Manager):
+    def available_languages(self):
+        languages_available = self.all().values("language") \
+                        .annotate(count=models.Count("*")).distinct() 
+
+        langs = dict(LANGUAGES)
+        for l in languages_available:
+            l["language_display"] = langs.get(l["language"])
+        return languages_available
 
 class Title(models.Model):
     id = models.AutoField(primary_key=True)
@@ -68,6 +88,8 @@ class Title(models.Model):
     media_type = models.CharField(max_length=8,choices=MEDIA_TYPES)
     description = models.TextField(blank=True)
     meta_data = models.TextField(blank=True)
+
+    objects = TitleManager()
 
     def active_items(self):
         return self.item_set.exclude(status__in=("private","unavailable"))
