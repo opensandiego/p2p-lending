@@ -13,6 +13,15 @@ module.exports = {
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {},
+          },
+        ],
       }
     ],
   },
@@ -28,7 +37,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin()
   ],
   devServer: {
-    contentBase: './dist',
+    contentBase: path.join(__dirname, 'dist'),
     historyApiFallback: true,
     hot: true,
     proxy: {

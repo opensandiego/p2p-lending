@@ -22,11 +22,11 @@ class App extends Component {
             <Route path="/" component={ScrollToTop} />
             <Switch>
               <Route exact path="/" component={Landing} />
-              <Route exact path="/search" component={TitlesResults} />
+              <Route exact path="/search/:searchTerm?" component={TitlesResults} />
               <Route exact path="/language/:languageID" component={TitlesResults} />
               <Route exact path="/titles/:titleID" exact component={TitleIndividual} />
               <Route exact path="/about" component={About} />
-              <Route component={NotFound} />
+              <Route exact path="*" component={NotFound} />
             </Switch>
           </div>
           <Footer />
