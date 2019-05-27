@@ -14,7 +14,6 @@ class BrowseByLanguage extends Component {
 
     fetchLanguages = () => {
    
-        // an actual API backend call
         api
             .fetchAllLanguages()
             .then(response => this.setState({ languages: response.data }))
