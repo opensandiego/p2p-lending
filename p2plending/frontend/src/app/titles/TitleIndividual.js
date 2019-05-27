@@ -7,7 +7,7 @@ import LoginModal from "../auth/LoginModal";
 import SignupModal from "../auth/SignupModal";
 import CallToAction from "../../components/CallToAction";
 
-import { hasParamInUrlChanged } from "../routedComponentUtils"
+import { hasParamInUrlChanged } from "../../components/componentUtils/routerUrls";
 
 class TitleIndividual extends Component {
   static defaultProps = { match: { params: {} } };

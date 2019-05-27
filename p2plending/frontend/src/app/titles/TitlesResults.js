@@ -6,7 +6,7 @@ import TitleItem from "./TitleItem";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import { hasParamInUrlChanged } from "../routedComponentUtils";
+import { hasParamInUrlChanged } from "../../components/componentUtils/routerUrls";
 
 //Your initialization
 
