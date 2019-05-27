@@ -20,11 +20,15 @@ class Header extends Component {
     this.setState({ showSignupModal: false });
   };
 
+  onSubmitLogin = () =>{
+    console.log("login attempted")
+  }
+
   render() {
 
     return (
       <div className="header">
-        <LoginModal isOpen={this.state.showLoginModal} onClose={this.onCloseLoginModal} />
+        <LoginModal isOpen={this.state.showLoginModal} onClose={this.onCloseLoginModal} onSubmit={this.onSubmitLogin} />
         <SignupModal isOpen={this.state.showSignupModal} onClose={this.onCloseSignupModal} />
         <div className="container container--full d-flex justify-content-between align-items-center py-2 w-100">
         <div className="d-flex align-items-center">

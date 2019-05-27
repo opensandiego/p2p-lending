@@ -7,6 +7,8 @@ import LoginModal from "../auth/LoginModal";
 import SignupModal from "../auth/SignupModal";
 import CallToAction from "../../components/CallToAction";
 
+import { hasParamInUrlChanged } from "../routedComponentUtils"
+
 class TitleIndividual extends Component {
   static defaultProps = { match: { params: {} } };
   state = {
@@ -31,8 +33,7 @@ class TitleIndividual extends Component {
     this.props.history.goBack();
   };
 
-
-  componentDidMount(){
+  fetchTitleContentsAndUpdateState = () => {
     // eslint-disable-next-line react/prop-types
     const { params } = this.props.match;
     if (params.titleID != undefined ) {
@@ -40,7 +41,20 @@ class TitleIndividual extends Component {
         this.setState({ title: data[0], searchString: params.titleID  });
       });
     }
+  };
+
+  componentDidUpdate(prevProps) {
+    if (!hasParamInUrlChanged(prevProps.match, this.props.match, "titleID")) {
+      return;
+    }
+
+    this.fetchTitleContentsAndUpdateState();
   }
+
+  componentDidMount(){
+    this.fetchTitleContentsAndUpdateState();
+  }
+
   render() {
     const { title } = this.state
     return (

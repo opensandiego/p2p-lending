@@ -4,6 +4,8 @@ import Modal from "react-modal";
 import { Link, withRouter } from "react-router-dom";
 
 import Octicon from "../../components/Octicon";
+import LoginForm from "../../components/LoginForm";
+
 
 const config = require("../../../config/index");
 
@@ -26,13 +28,7 @@ const LoginModal = ({ isOpen, onClose }) => (
           </p>
         </div>
         <div className="row justify-content-md-center">
-
-              <button
-                className="btn btn-sm btn-success d-flex px-3 py-2"
-              >
-                <small className="font-weight-bold">LOG IN</small>
-              </button>
- 
+            <LoginForm signalClose={onClose}></LoginForm>
         </div>
         <div className="text-center mt-2" style={{ opacity: 0.5 }}>
           <Link

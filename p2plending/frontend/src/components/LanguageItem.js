@@ -7,6 +7,7 @@ class LanguageItem extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
     number: PropTypes.number.isRequired,
+    code: PropTypes.string.isRequired,
   }
 
   getFlagEmoji(lang) {
@@ -30,7 +31,9 @@ class LanguageItem extends Component {
   }
   
   render() {
-    
+    if(!this.props.name || !this.props.code || !this.props.number){
+      return <div></div>
+    }
     return (
       <div className="deck-item col-4 col-sm-3 col-lg-3 d-flex">
         <Link
