@@ -10,7 +10,7 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name="base.html")),
     path('admin/', admin.site.urls),
     path('api/v1/', include('lending.urls')),
-    path('api-csrf/', get_csrf),
+    path('api-csrf/', get_csrf, name="get_csrf"),
 #    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('api-auth/', include('rest_auth.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
