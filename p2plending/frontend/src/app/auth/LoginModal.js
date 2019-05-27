@@ -28,7 +28,7 @@ const LoginModal = ({ isOpen, onClose }) => (
           </p>
         </div>
         <div className="row justify-content-md-center">
-            <LoginForm></LoginForm>
+            <LoginForm signalClose={onClose}></LoginForm>
         </div>
         <div className="text-center mt-2" style={{ opacity: 0.5 }}>
           <Link
