@@ -5,6 +5,9 @@ import * as api from "../backendCalls";
 import TitleItem from "./TitleItem";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
+
+import { hasParamInUrlChanged } from "../routedComponentUtils";
+
 //Your initialization
 
 class TitlesResultView extends Component {
@@ -52,20 +55,6 @@ class TitlesResults extends Component {
     titles: []
   }
   
-  hasSearchTermInUrlChanged = (prevMatch, currentMatch) => {
-    if (prevMatch.params === undefined && currentMatch.params !== undefined) {
-      return true;
-    } else if (prevMatch.params !== undefined && currentMatch.params === undefined) {
-      return true;
-    }
-
-    if (prevMatch.params.searchTerm !== currentMatch.params.searchTerm) {
-      return true;
-    }
-
-    return false;
-  };
-
   fetchTitlesAndUpdateState = () => {
     const { params } = this.props.match;
     if (params.searchTerm != undefined ) {
@@ -76,7 +65,7 @@ class TitlesResults extends Component {
   };
 
   componentDidUpdate(prevProps) {
-    if (!this.hasSearchTermInUrlChanged(prevProps.match, this.props.match)) {
+    if (!hasParamInUrlChanged(prevProps.match, this.props.match, "searchTerm")) {
       return;
     }
 
