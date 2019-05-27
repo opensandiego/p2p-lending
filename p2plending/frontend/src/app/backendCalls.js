@@ -3,36 +3,8 @@ import axios from "axios";
 import queryString from "query-string";
 import cookie from "js-cookie";
 
-const languageSubstitute = [
-    {
-        name: "English",
-        number: 12
-    },
-    {
-        name: "Spanish",
-        number: 19,       
-    },
-    {
-        name: "Chinese",
-        number: 6       
-    },
-    {
-        name: "Korean",
-        number: 5       
-    },
-    {
-        name: "Japanese",
-        number: 6       
-    },
-    {
-        name: "Russian",
-        number: 5       
-    }
-]
-
 export const fetchAllLanguages = () => {
-    // return axios.get("/api/v1/languages");
-    return languageSubstitute;
+    return axios.get("/api/v1/available-languages/");
 }
 
 export const fetchAllTitles = () => {

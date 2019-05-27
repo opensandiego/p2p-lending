@@ -14,14 +14,11 @@ class BrowseByLanguage extends Component {
 
     fetchLanguages = () => {
    
-        // no ties to backend
-        this.setState({ languages: api.fetchAllLanguages() })
-
         // an actual API backend call
-        // api
-        //   .fetchAllLanguages()
-        //   .then(response => this.setState({ languages: response.data }))
-        //   .catch(error => console.error(error));
+        api
+            .fetchAllLanguages()
+            .then(response => this.setState({ languages: response.data }))
+            .catch(error => console.error(error));
       };
     
     render() {
@@ -39,8 +36,9 @@ class BrowseByLanguage extends Component {
                               {languages.map((item, index) => (
                                 <LanguageItem 
                                   key={index}
-                                  name={item.name}
-                                  number={item.number}
+                                  name={item.language_display}
+                                  number={item.count}
+                                  code={item.language}
                                 />
                               ))}
                           </div>
