@@ -10,19 +10,40 @@ class LanguageItem extends Component {
     code: PropTypes.string.isRequired,
   }
 
+  getFlagEmoji(lang) {
+    const emojiPath = "https://github.githubassets.com/images/icons/emoji/unicode/";
+    switch(lang) {
+      case 'English':
+        return `${emojiPath}1f1ec-1f1e7.png`
+      case 'Spanish':
+        return `${emojiPath}1f1ea-1f1f8.png`
+      case 'Chinese':
+        return `${emojiPath}1f1e8-1f1f3.png`
+      case 'Korean':
+        return `${emojiPath}1f1f0-1f1f7.png`
+      case 'Japanese':
+        return `${emojiPath}1f1ef-1f1f5.png`
+      case 'Russian':
+        return `${emojiPath}1f1f7-1f1fa.png?` 
+      default:
+        return '⚈';
+    }
+  }
+  
   render() {
     if(!this.props.name || !this.props.code || !this.props.number){
       return <div></div>
     }
     return (
-      <div className="deck-item col-4 col-sm-3 col-md-4 col-lg-3 d-flex">
-        ⚈ <Link
-          to={`/language/${this.props.code.toString().toLowerCase()}`}
-          className="d-flex flex-column justify-content-between text-dark mb-1 p-1 w-50 position-relative"
+      <div className="deck-item col-4 col-sm-3 col-lg-3 d-flex">
+        <Link
+          to={`/language/${this.props.name.toString().toLowerCase()}`}
+          className=""
           style={{ fontSize: "14px" }}
         >
           <div style={{ textDecoration: "underline" }}>
-             {this.props.name}{" "}({ this.props.number })
+          <img alt={this.props.name} height="15" width="15" src={this.getFlagEmoji(this.props.name)} /> 
+             <scan style={{paddingLeft: 5}}>{this.props.name}{" "}({ this.props.number })</scan>
           </div>
         </Link>
       </div>
