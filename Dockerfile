@@ -1,4 +1,4 @@
-FROM python:3 AS base
+FROM python:3.7 AS base
 ENV PYTHONUNBUFFERED 1
 RUN mkdir /code
 WORKDIR /code
