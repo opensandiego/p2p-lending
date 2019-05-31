@@ -13,6 +13,7 @@ class LanguageItem extends Component {
   }
   
   render() {
+    console.log(this.props)
     if(!this.props.name || !this.props.code || !this.props.number){
       return <div></div>
     }
@@ -24,8 +25,8 @@ class LanguageItem extends Component {
           style={{ fontSize: "14px" }}
         >
           <div style={{ textDecoration: "underline" }}>
-          <img alt={this.props.name} height="15" width="15" src={getFlagEmoji(this.props.name)} /> 
-             <scan style={{paddingLeft: 5}}>{this.props.name}{" "}({ this.props.number })</scan>
+          <img  style={{paddingRight: 5}} alt="" height="15" width="15" src={getFlagEmoji(this.props.code)} /> 
+             {this.props.name}{" "}({ this.props.number })
           </div>
         </Link>
       </div>

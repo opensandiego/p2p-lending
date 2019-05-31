@@ -22,6 +22,7 @@ class BrowseByLanguage extends Component {
     
     render() {
     const { languages } = this.state;
+    console.log(this.state);
       return (
         <div className="container">
           <div className="row d-flex align-item-center position-relative pt-3 mx-auto" style={{ maxWidth:"500px" }}>
