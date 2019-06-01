@@ -13,7 +13,6 @@ class LanguageItem extends Component {
   }
   
   render() {
-    console.log(this.props)
     if(!this.props.name || !this.props.code || !this.props.number){
       return <div></div>
     }

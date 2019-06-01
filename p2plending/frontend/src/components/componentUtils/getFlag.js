@@ -6,9 +6,6 @@ export const getFlagEmoji = lang => {
     const emojiStyle = "shiny/32";
     var langCode = lang2flag[lang];
 
-    console.log(`!${lang}!`);
-    console.log(`!${langCode}!`);
     const flagURl = `${emojiPath}/${langCode}/${emojiStyle}.png`;
-    console.log(flagURl);
     return flagURl
   }
