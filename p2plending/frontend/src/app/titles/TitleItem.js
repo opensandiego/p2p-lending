@@ -1,6 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import { getFlagEmoji } from "../../components/componentUtils/getFlag";
+
+const flagStyle = {
+  border: "1px solid lightgray", 
+  objectFit: 'none'}
 
 // eslint-disable-next-line react/prop-types
 const TitleItem = ({ title }) => (
@@ -34,11 +39,9 @@ const TitleItem = ({ title }) => (
       {title.language && (
         <div
           className="position-absolute d-flex align-items-center"
-          style={{ bottom: "16px", right: "18px" }}
+          style={{ bottom: "10px", right: "18px" }}
         >
-          <div className="badge badge-primary ml-1 p-0">
-            <div className="text-uppercase p-1">{title.language}</div>
-          </div>
+            <img alt="" height="30" width="48" ml-1 p-1 style={flagStyle} src={getFlagEmoji(title.language, 'flat/48')} />
         </div>
       )}
       <div
