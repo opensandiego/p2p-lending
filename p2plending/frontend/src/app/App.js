@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import TitlesResults from "./titles/TitlesResults";
 import TitleIndividual from "./titles/TitleIndividual";
 import About from "./about/About";
+import Privacy from "./privacy/Privacy";
 import Landing from "./landing/Landing";
 import Footer from "./Footer";
 import Header from "./Header";
@@ -26,6 +27,7 @@ class App extends Component {
               <Route exact path="/language/:languageID" component={TitlesResults} />
               <Route exact path="/titles/:titleID" exact component={TitleIndividual} />
               <Route exact path="/about" component={About} />
+              <Route exact path="/privacy" component={Privacy} />
               <Route exact path="*" component={NotFound} />
             </Switch>
           </div>
