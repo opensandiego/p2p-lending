@@ -30,7 +30,7 @@ const Footer = () => (
         </li>
         <li className="list-inline-item">
           <small>
-            <Link to="/">
+            <Link to="/privacy">
               Privacy
             </Link>
           </small>
