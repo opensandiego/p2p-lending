@@ -20,7 +20,7 @@ const LoginModal = ({ isOpen, onClose }) => (
       <Octicon name="x" />
     </button>
     <div className="container text-center">
-      <div className="py-5 px-4 my-2 mx-auto" style={{ maxWidth: "300px" }}>
+      <div className="py-5 px-4 my-2 mx-auto" style={{ maxWidth: "320px" }}>
         <div className="mx-auto">
           <h5 className="mb-1">Login to { title }</h5>
           <p className="text-secondary font-weight-light">
