@@ -6,6 +6,7 @@ import { withRouter }  from "react-router-dom";
 import LoginModal from "../auth/LoginModal";
 import SignupModal from "../auth/SignupModal";
 import CallToAction from "../../components/CallToAction";
+import { getFlagEmoji } from "../../components/componentUtils/getFlag";
 
 import { hasParamInUrlChanged } from "../../components/componentUtils/routerUrls";
 
@@ -57,6 +58,10 @@ class TitleIndividual extends Component {
 
   render() {
     const { title } = this.state
+    const flagStyle = {
+      border: "1px solid lightgray", 
+      objectFit: 'none'}
+
     return (
       <div id="container p-4 my-5">
         <LoginModal isOpen={this.state.showLoginModal} onClose={this.onCloseLoginModal} />
@@ -142,11 +147,9 @@ class TitleIndividual extends Component {
             {title.language && (
               <div
                 className="position-absolute d-flex align-items-center"
-                style={{ bottom: "16px", right: "18px" }}
+                style={{ bottom: "15px", right: "18px" }}
               >
-                <div className="badge badge-primary ml-1 p-0">
-                  <div className="text-uppercase p-1">{title.language}</div>
-                </div>
+                <img alt="" height="20" width="32" ml-1 p-1 style={flagStyle} src={getFlagEmoji(title.language, 'flat/32')} />
               </div>
             )}
           </div>    
