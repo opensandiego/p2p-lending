@@ -39,9 +39,9 @@ const TitleItem = ({ title }) => (
       {title.language && (
         <div
           className="position-absolute d-flex align-items-center"
-          style={{ bottom: "10px", right: "18px" }}
+          style={{ bottom: "15px", right: "18px" }}
         >
-            <img alt="" height="30" width="48" ml-1 p-1 style={flagStyle} src={getFlagEmoji(title.language, 'flat/48')} />
+            <img alt="" height="20" width="30" ml-1 p-1 style={flagStyle} src={getFlagEmoji(title.language, 'flat/32')} />
         </div>
       )}
       <div
