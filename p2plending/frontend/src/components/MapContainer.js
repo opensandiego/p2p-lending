@@ -8,7 +8,6 @@ const library = config.library
 class MapContainer extends Component {
 
   render() {
-    console.log(location);
     return (
       
     <Map center={location} zoom={16}>
