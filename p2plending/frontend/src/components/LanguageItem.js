@@ -24,7 +24,7 @@ class LanguageItem extends Component {
           style={{ fontSize: "14px" }}
         >
           <div style={{ textDecoration: "underline" }}>
-          <img  style={{paddingRight: 5}} alt="" height="15" width="15" src={getFlagEmoji(this.props.code)} /> 
+          <img  style={{paddingRight: 5}} alt="" height="16" width="22" src={getFlagEmoji(this.props.code)} /> 
              {this.props.name}{" "}({ this.props.number })
           </div>
         </Link>
