@@ -174,7 +174,7 @@ class Privacy extends Component {
             <p>
               If you have any questions or suggestions about
               our Privacy Policy, do not hesitate to contact
-              us at https://opensandiego.org/
+              us at <a href="https://opensandiego.org/">Open San Diego</a>
             </p>
           </div>
         </div>

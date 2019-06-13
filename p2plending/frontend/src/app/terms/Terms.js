@@ -45,12 +45,12 @@ class Terms extends Component {
               that you read them carefully before using the app. 
             </p> 
             <p>
-              Open San Diego Org is committed to ensuring that the app
+              Open San Diego is committed to ensuring that the app
               is as useful and efficient as possible. For that reason, we
               reserve the right to make changes to the app at any time and for any reason.
             </p> 
             <p>
-              The Lendo app stores and processes personal data
+              { title } stores and processes personal data
               that you have provided to us, in order to provide
               our Service. It's your responsibility to keep your
               phone and access to the app secure. We therefore recommend
@@ -59,16 +59,16 @@ class Terms extends Component {
               imposed by the official operating system of your device. It
               could make your phone vulnerable to
               malware/viruses/malicious programs, compromise your phone's
-              security features and it could mean that the
-              Lendo app won't work properly or at all.
+              security features and it could mean that { title } 
+              won't work properly or at all.
             </p> 
             <p>
               You should be aware that there are certain things that
-              Open San Diego Org will not take responsibility for.
+              Open San Diego will not take responsibility for.
               Certain functions of the app will require the app to have an
               active internet connection. The connection can be Wi-Fi, or
               provided by your mobile network provider, but
-              Open San Diego Org cannot take responsibility for the
+              Open San Diego cannot take responsibility for the
               app not working at full functionality if you don't have
               access to Wi-Fi, and you don't have any of your data
               allowance left.
@@ -90,27 +90,27 @@ class Terms extends Component {
               using the app.
             </p> 
             <p>
-              Along the same lines, Open San Diego Org cannot always
+              Along the same lines, Open San Diego cannot always
               take responsibility for the way you use the app i.e. You
               need to make sure that your device stays charged and if it
               runs out of battery and you can't turn it on to avail the
-              Service, Open San Diego Org cannot accept
+              Service, Open San Diego cannot accept
               responsibility.
             </p> 
             <p>
-              With respect to Open San Diego Org's responsibility for
+              With respect to Open San Diego's responsibility for
               your use of the app, when you're using the app, it's
               important to bear in mind that although we endeavour to
               ensure that it is updated and correct at all times, we may
               rely on third parties to provide information to us so that
               we can make it available to you.
-              Open San Diego Org accepts no liability for any loss,
+              Open San Diego accepts no liability for any loss,
               direct or indirect, you experience as a result of relying
               wholly on this functionality of the app.
             </p> 
             <p>
               At some point, we may wish to update the app.
-              Open San Diego Org does not promise that
+              Open San Diego does not promise that
               it will always update the app so that it is relevant to
               and/or works with your current hardware and software. 
               However, you promise to always
@@ -133,7 +133,7 @@ class Terms extends Component {
             <p><strong>Contact Us</strong></p> <p>
               If you have any questions or suggestions about
               our Terms and Conditions, do not hesitate to
-              contact us at https://opensandiego.org/
+              contact us at <a href="https://opensandiego.org/">Open San Diego</a>
             </p>
           </div>
         </div>
