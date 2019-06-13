@@ -5,6 +5,7 @@ import TitlesResults from "./titles/TitlesResults";
 import TitleIndividual from "./titles/TitleIndividual";
 import About from "./about/About";
 import Privacy from "./privacy/Privacy";
+import Terms from "./terms/Terms";
 import Landing from "./landing/Landing";
 import Footer from "./Footer";
 import Header from "./Header";
@@ -28,6 +29,7 @@ class App extends Component {
               <Route exact path="/titles/:titleID" exact component={TitleIndividual} />
               <Route exact path="/about" component={About} />
               <Route exact path="/privacy" component={Privacy} />
+              <Route exact path="/terms" component={Terms} />
               <Route exact path="*" component={NotFound} />
             </Switch>
           </div>

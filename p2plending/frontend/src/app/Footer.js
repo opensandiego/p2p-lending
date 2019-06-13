@@ -23,7 +23,7 @@ const Footer = () => (
         </li>
         <li className="list-inline-item">
           <small>
-            <Link to="/">
+            <Link to="/terms">
               Terms
             </Link>
           </small>
