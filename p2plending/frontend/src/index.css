@@ -183,3 +183,8 @@ h1 {
   top: 30%;
   transform: translateY(-50%); 
 }
+
+.leaflet-container {
+  height: 300px;
+  width: 100%;
+}
