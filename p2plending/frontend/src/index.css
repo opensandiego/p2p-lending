@@ -188,3 +188,38 @@ h1 {
   height: 300px;
   width: 100%;
 }
+
+.rc-tooltip {
+  opacity: 1;
+}
+.rc-tooltip-content {
+  max-width: 200px;
+}
+
+#tooltip-white,
+#header-logout {
+  background: white;
+  border-radius: 3px;
+  padding: 8px 12px;
+  border: 1px solid #e8e8e8;
+  box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.2);
+}
+.rc-tooltip {
+  opacity: 1;
+}
+
+.rc-tooltip-content .tooltip-item {
+  padding-bottom: 6px;
+  padding-top: 6px;
+}
+
+.header-login .header-image {
+  width: 40px;
+  height: 40px;
+}
+
+#header-logout {
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #e8e8e8;
+}

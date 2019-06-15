@@ -2,6 +2,38 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import LoginModal from "./auth/LoginModal";
 import SignupModal from "./auth/SignupModal";
+import * as localStorage from "../components/componentUtils/localStorage";
+import Tooltip from "rc-tooltip";
+import * as api from "./backendCalls";
+
+const OptionsToolTip = ({ user }) => (
+  <div className="tooltip-content">
+    <div className="tooltip-item">
+      <Link className="text-secondary" to={`/${user.username}`} disabled={!user.username}>
+        Order Status
+      </Link>
+    </div>
+    <div className="tooltip-item">
+      <Link className="text-secondary" to={`/settings/profile`} >
+        Preferences
+      </Link>
+    </div>
+    <hr className="m-0 my-1" />
+    <div className="tooltip-item">
+      <Link
+        className="text-secondary"
+        to="/logout"
+      >
+        Logout
+      </Link>
+    </div>
+  </div>
+);
+
+const PlaceholderImage = () => (
+  <div className="header-image d-flex align-items-center justify-content-center bg-dark">
+  </div>
+);
 
 class Header extends Component {
   state = {
