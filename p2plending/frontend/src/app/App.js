@@ -9,9 +9,12 @@ import Terms from "./terms/Terms";
 import Landing from "./landing/Landing";
 import Footer from "./Footer";
 import Header from "./Header";
-
+import Logout from "../components/auth/Logout";
+import Settings from "./settings/Settings"
 import NotFound from "../components/NotFound";
 import ScrollToTop from "../components/ScrollToTop";
+import OrderStatus from "./profile/OrderStatus";
+import ReqUser from "./auth/ReqUser";
 
 class App extends Component {
  
@@ -24,9 +27,12 @@ class App extends Component {
             <Route path="/" component={ScrollToTop} />
             <Switch>
               <Route exact path="/" component={Landing} />
+              <Route path="/logout" component={Logout} />
               <Route exact path="/search/:searchTerm?" component={TitlesResults} />
               <Route exact path="/language/:languageID" component={TitlesResults} />
               <Route exact path="/titles/:titleID" exact component={TitleIndividual} />
+              <Route exact path="/settings/profile" component={Settings} />
+              <Route exact path="/:username" component={ReqUser(OrderStatus)} />
               <Route exact path="/about" component={About} />
               <Route exact path="/privacy" component={Privacy} />
               <Route exact path="/terms" component={Terms} />

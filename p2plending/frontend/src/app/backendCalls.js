@@ -1,7 +1,9 @@
+/* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 import axios from "axios";
 import queryString from "query-string";
 import cookie from "js-cookie";
+import * as localStorage from "../components/componentUtils/localStorage";
 
 export const fetchAllLanguages = () => {
     return axios.get("/api/v1/available-languages/");
@@ -30,6 +32,12 @@ export const getCSRFToken = () => {
     });
 };
 
+export const storeCSRFToken = () => {
+    return axios.get("/api-csrf/").then( ({data}) => {
+        localStorage.setCSRFToken(data.csrf_token);
+    });
+};
+
 export const submitLogin = (username,password,csrf) => {
     return axios.post("/api-auth/login/", 
         {username:username,password:password},
@@ -39,8 +47,24 @@ export const submitLogin = (username,password,csrf) => {
     );
 }
 
-export const fetchUserProfile = () => {
-    return axios.get("/api/v1/profile/");
+export const fetchUserProfile = ( username ) => {
+    console.log("TODO: Return User Data ");
+    // return axios.get(`/api/v1/current-profile/?${queryString.stringify({ username })}`);
+    // return axios.get(`/api/v1/current-profile/`);
 }
 
+export const getUserName = () => {
+    console.log("backend call to get User Data")
+    const user = {
+      username : "test-username"
+    }
+    return user;
+};
 
+export const deleteUserProfile = () => {
+    console.log("delete User Profile from database");
+};
+export const updateUserProfile = (profile) => {
+    console.log("backend call update User Data");
+    console.log(profile);
+};

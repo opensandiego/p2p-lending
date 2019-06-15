@@ -52,15 +52,15 @@ class Header extends Component {
     this.setState({ showSignupModal: false });
   };
 
-  onSubmitLogin = () =>{
-    console.log("login attempted")
-  }
-
   render() {
+    // If CSRF Token is in Local Storage then request user name/profile info
+    // If both are present then you can display User Information Instead of Login/Signup Button
+    const authenticated = localStorage.getAuthKey();
+    const user = authenticated ? api.getUserName() : {};
 
     return (
       <div className="header">
-        <LoginModal isOpen={this.state.showLoginModal} onClose={this.onCloseLoginModal} onSubmit={this.onSubmitLogin} />
+        <LoginModal isOpen={this.state.showLoginModal} onClose={this.onCloseLoginModal} />
         <SignupModal isOpen={this.state.showSignupModal} onClose={this.onCloseSignupModal} />
         <div className="container container--full d-flex justify-content-between align-items-center py-2 w-100">
         <div className="d-flex align-items-center">
@@ -74,27 +74,43 @@ class Header extends Component {
               </Link>
           </div>
           <ul className="d-flex align-items-center p-0 m-0">
-
-                <li className="list-inline-item ml-2" key={1}>
-                  <button
-                    className="btn btn-sm btn-outline-dark d-flex px-3 py-2"
-                    onClick={() => {
-                      this.onOpenLoginModal();
-                    }}
-                  >
-                    <small className="font-weight-bold">LOG IN</small>
-                  </button>
-                </li>
-                <li className="list-inline-item ml-1" key={2}>
-                  <button
-                    className="btn btn-sm btn-primary d-flex px-3 py-2"
-                    onClick={() => { 
-                      this.onOpenSignupModal();
-                    }}
-                  >
-                    <small className="font-weight-bold">SIGN UP</small>
-                  </button>
-                </li>
+          {authenticated
+              ? [
+                  <li className="header-login list-inline-item ml-3" key={1}>
+                    <Tooltip
+                      placement="bottomRight"
+                      trigger={["click"]}
+                      overlay={<OptionsToolTip user={user} />}
+                      id="header-logout"
+                    >
+                      <div className="position-relative">
+                          <PlaceholderImage />
+                      </div>
+                    </Tooltip>
+                  </li>,
+                ]
+              : [
+                  <li className="list-inline-item ml-2" key={1}>
+                    <button
+                      className="btn btn-sm btn-outline-dark d-flex px-3 py-2"
+                      onClick={() => {
+                        this.onOpenLoginModal();
+                      }}
+                    >
+                      <small className="font-weight-bold">LOG IN</small>
+                    </button>
+                  </li>,
+                  <li className="list-inline-item ml-1" key={2}>
+                    <button
+                      className="btn btn-sm btn-primary d-flex px-3 py-2"
+                      onClick={() => { 
+                        this.onOpenSignupModal();
+                      }}
+                    >
+                      <small className="font-weight-bold">SIGN UP</small>
+                    </button>
+                  </li>,
+                ]}
           </ul>
         </div>
       </div>

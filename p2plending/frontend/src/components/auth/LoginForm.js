@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import * as api from "../app/backendCalls";
+import * as api from "../../app/backendCalls";
+import * as localStorage from "../componentUtils/localStorage";
 
 class LoginForm extends React.Component {
     state = {
@@ -33,9 +32,8 @@ class LoginForm extends React.Component {
     handleSubmit = (event) => {
         api.submitLogin(this.state.username,this.state.password,this.state.csrftoken).then(
             ({ data }) => {
-                console.log(data);
-                // New CSRF token, TODO update as global
-                this.setState({key: data.key});
+                // New CSRF token store in local storage
+                localStorage.setAuthKey(data.key);
                 this.props.signalClose();
             }).catch( (error) => { 
                 if(error.response){
@@ -60,18 +58,20 @@ class LoginForm extends React.Component {
 
       return (
         <form onSubmit={this.handleSubmit}>
-          {form_error} 
+          {form_error}
+
           <div className="text-right">
-          <label >
-            Username:{' '} 
-            <input type="text" name="username" value={this.state.username} onChange={this.handleInputChange} />
-          </label>
-          <label>
-            Name: {' '} 
-            <input type="password" name="password" value={this.state.password} onChange={this.handleInputChange} />
-          </label>
+            <label >
+              Username:{' '} 
+              <input className="border rounded p-1" type="text" name="username" value={this.state.username} onChange={this.handleInputChange} />
+            </label>
+            <label>
+              Password: {' '} 
+              <input className="border rounded p-1" type="password" name="password" value={this.state.password} onChange={this.handleInputChange} />
+            </label>
           </div>
-          <button type="submit" class="btn btn-outline-dark m-2">Submit</button>
+
+          <button type="submit" className="btn btn-success btn-sml m-2">Sign In</button>
         </form>
       );
    }

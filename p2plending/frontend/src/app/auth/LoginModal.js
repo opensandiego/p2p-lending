@@ -4,7 +4,7 @@ import Modal from "react-modal";
 import { Link, withRouter } from "react-router-dom";
 
 import Octicon from "../../components/Octicon";
-import LoginForm from "../../components/LoginForm";
+import LoginForm from "../../components/auth/LoginForm";
 
 
 const config = require("../../../config/index");
