@@ -31,7 +31,8 @@ const OptionsToolTip = ({ user }) => (
 );
 
 const PlaceholderImage = () => (
-  <div className="header-image d-flex align-items-center justify-content-center bg-dark">
+  <div className="header-image d-flex align-items-center justify-content-center">
+    <i className="fas fa-bars" />
   </div>
 );
 
