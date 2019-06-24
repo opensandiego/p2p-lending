@@ -7,9 +7,9 @@ import { getFlagEmoji } from "./componentUtils/getFlag";
 class LanguageItem extends Component {
   
   static propTypes = {
-    name: PropTypes.string.isRequired,
-    number: PropTypes.number.isRequired,
-    code: PropTypes.string.isRequired,
+    name: PropTypes.string,
+    number: PropTypes.number,
+    code: PropTypes.string,
   }
   
   render() {

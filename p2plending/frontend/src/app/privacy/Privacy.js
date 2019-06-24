@@ -29,7 +29,7 @@ class Privacy extends Component {
           <h2 className="m-0">Privacy</h2>
           <div className="mx-auto" style={{ maxWidth: "500px" }}>
             <span>
-              {title} is a Peer to Peer Book Exchange! Share and explore the books within your local community.{" "}
+              { title } is a Peer to Peer Book Exchange! Share and explore the books within your local community.{" "}
               <span role="img" aria-label="Globex emoji">
                 📖
               </span>
@@ -99,7 +99,7 @@ class Privacy extends Component {
               Cookies are files with a small amount of data that are
               commonly used as anonymous unique identifiers. These are
               sent to your browser from the websites that you visit and
-              are stored on your device's internal memory.
+              are stored on your device&apos;s internal memory.
             </p> 
             <p>
               This Service does not use these cookies explicitly.
@@ -149,7 +149,7 @@ class Privacy extends Component {
               responsibility for the content, privacy policies, or
               practices of any third-party sites or services.
             </p> 
-            <p><strong>Children's Privacy</strong></p> 
+            <p><strong>Children&apos;s Privacy</strong></p> 
             <p>
               These Services do not address anyone under the age of 13.
               We do not knowingly collect personally
