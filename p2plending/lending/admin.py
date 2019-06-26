@@ -59,6 +59,11 @@ class LoanAdmin(admin.ModelAdmin):
     raw_id_fields = ("borrower","item","renewal_of")
 admin.site.register(Loan,LoanAdmin)
 
+class ItemAdmin(admin.ModelAdmin):
+    list_display = ("title","owner","status")
+    list_filter = ("status","date_added")
+admin.site.register(Item,ItemAdmin)
+
 class LocationAdmin(admin.ModelAdmin):
     list_display = ("name","active_users")
 

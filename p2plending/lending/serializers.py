@@ -1,13 +1,13 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
-from .models import Location,Profile,Title,Item,Loan,TitleRequest
+from .models import Location,Profile,Title,Item,Loan,TitleRequest,Loan
 
 class TitleSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Title
         fields = ('id','title','author','publish_year','language','cover_image','media_type','description')
 
-class TitleDetailSerializer(serializers.HyperlinkedModelSerializer):
+class TitleDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Title  
         fields = ('title','language','cover_image','media_type','description')
@@ -19,7 +19,7 @@ class TitleDetailSerializer(serializers.HyperlinkedModelSerializer):
         result['queued_requests'] = obj.queued_requests().count()
         return result
 
-class LocationSerializer(serializers.HyperlinkedModelSerializer):
+class LocationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Location
         fields = ("name","lat","lng")
@@ -44,4 +44,25 @@ class ProfileSerializer(serializers.ModelSerializer):
         ret['lender_items'] = instance.lender_items_by_status()
         return ret
 
+# We separate borrower and owner serializers as we will make sure
+# not to expose the details of a loan to either party
+class BorrowerLoanSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Loan
+        fields = ('id','start_date','due_date','status')
+
+    def to_representation(self, obj):
+        result = super(BorrowerLoanSerializer,self).to_representation(obj)
+        result['title'] = TitleSerializer(obj.item.title).data
+        return result
+
+class OwnerLoanSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Loan
+        fields = ('id','item','start_date','due_date','status')
+
+    def to_representation(self, obj):
+        result = super(OwnerLoanSerializer,self).to_representation(obj)
+        result['title'] = TitleSerializer(obj.item.title).data
+        return result
 
