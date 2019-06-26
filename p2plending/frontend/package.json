@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.4.4",
-    "axios": "^0.18.0",
+    "axios": "^0.19.0",
     "classnames": "^2.2.6",
     "leaflet": "^1.5.1",
     "lodash": "^4.17.5",
