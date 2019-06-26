@@ -21,6 +21,9 @@ export const searchContentTitles = search => {
     return axios.get(`/api/v1/titles/?${queryString.stringify({ search })}`);
 };
 
+export const getLanguageTitles = language => {
+    return axios.get(`/api/v1/titles/?${queryString.stringify({ language })}`);
+};
 
 // **** Authenticated API Endpoints ****
 

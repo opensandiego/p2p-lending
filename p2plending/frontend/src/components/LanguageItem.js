@@ -19,7 +19,7 @@ class LanguageItem extends Component {
     return (
       <div className="deck-item col-4 col-sm-3 col-lg-3 d-flex">
         <Link
-          to={`/language/${this.props.name.toString().toLowerCase()}`}
+          to={`/language/${this.props.code.toString().toLowerCase()}`}
           className=""
           style={{ fontSize: "14px" }}
         >
