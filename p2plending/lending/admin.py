@@ -25,12 +25,14 @@ class ItemInline(admin.TabularInline):
     raw_id_fields = ("owner",)
 
 class TitleAdmin(admin.ModelAdmin):
-    list_display = ("title","author","publish_year","language","media_type","items","available")
+    list_display = ("title","author","publish_year","language","media_type","items","available","requests")
     list_filter = ("media_type","language")
     search_fields = ("title","author",)
     inlines = [ItemInline]
     actions = ["process_next_request"]
 
+    def requests(self,instance):
+        return instance.queued_requests().count()
 
     def available(self,instance):
         return instance.available_items().count()

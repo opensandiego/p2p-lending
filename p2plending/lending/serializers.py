@@ -67,3 +67,8 @@ class OwnerLoanSerializer(serializers.ModelSerializer):
         result['title'] = TitleSerializer(obj.item.title).data
         return result
 
+class TitleRequestSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TitleRequest
+        fields = ('id','request_date','status')
+

@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 from rest_framework.response import Response
 from .models import Profile,Loan
-from .serializers import ProfileSerializer,BorrowerLoanSerializer,OwnerLoanSerializer
+from .serializers import ProfileSerializer,BorrowerLoanSerializer,OwnerLoanSerializer,TitleRequestSerializer
 
 
 class ProfileAuthViewMixin(object):
@@ -52,4 +52,14 @@ class OwnerLoanViewSet(viewsets.GenericViewSet,ProfileAuthViewMixin):
     def list(self,request,format=None):
         borrowed_loans = self.get_queryset()
         return Response( OwnerLoanSerializer(borrowed_loans, many=True, context={'request':request}).data )
+
+class RequestTitleViewSet(viewsets.GenericViewSet,ProfileAuthViewMixin):
+    serializer_class = TitleRequestSerializer
+
+    def get_queryset(self):
+        return Title.objects.all()
+
+    def create(self,request,title_id):
+        print(self.request.data) 
+        return Response({})
 

@@ -195,7 +195,7 @@ class TitleRequest(models.Model):
     def __str__(self):
         return "%s requested by %s on %s (%s)" % (
             self.title.title[:32],
-            self.requester.name,
+            self.requester and self.requester.name or "n/a",
             self.request_date,
             self.status
         )
