@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import TitlesResults from "./titles/TitlesResults";
+import LanguageResults from "./titles/LanguageResults";
 import TitleIndividual from "./titles/TitleIndividual";
 import About from "./about/About";
 import Privacy from "./privacy/Privacy";
@@ -29,7 +30,7 @@ class App extends Component {
               <Route exact path="/" component={Landing} />
               <Route path="/logout" component={Logout} />
               <Route exact path="/search/:searchTerm?" component={TitlesResults} />
-              <Route exact path="/language/:languageID" component={TitlesResults} />
+              <Route exact path="/language/:languageID" component={LanguageResults} />
               <Route exact path="/titles/:titleID" exact component={TitleIndividual} />
               <Route exact path="/settings/profile" component={Settings} />
               <Route exact path="/:username" component={ReqUser(OrderStatus)} />
