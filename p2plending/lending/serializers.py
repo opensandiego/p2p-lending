@@ -42,6 +42,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         ret['active_requests'] = instance.titles_requested().count()
         ret['active_loans'] = instance.items_on_loan().count() 
         ret['lender_items'] = instance.lender_items_by_status()
+        ret['is_lender'] = instance.lender_items().exists()
         return ret
 
 # We separate borrower and owner serializers as we will make sure
