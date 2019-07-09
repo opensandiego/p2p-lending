@@ -14,8 +14,8 @@ class Settings extends Component {
     showModal: false,
     showLoginModal: false,
     isSuccess: false,
-    profile: { name: "", email: "", username: "", email_notification: false, text_notification: false, inapp_notification: false   },
-    errors: { email: undefined, name: undefined },
+    user: { name: "", email: "", username: "", phone: "", primary_location: "1", preferred_language: null, email_notification: false, text_notification: false, inapp_notification: false   },
+    errors: { email: undefined, name: undefined, phone: undefined },
   };
 
   // Lifecylce methods
@@ -45,6 +45,13 @@ class Settings extends Component {
     return name.length === 0 ? ERRORS.REQUIRED : undefined;
   };
 
+  validatePhone = phone => {
+    const illegalChars = /\D/; // allow numbers only
+    const isValid = !illegalChars.test(phone) && phone.length >= 7 && phone.length <= 14;
+    const validMessage = !isValid ? ERRORS.INVALID : undefined;
+    return phone.length === 0 ? ERRORS.REQUIRED : validMessage;
+  };
+
   // Event listeners
   onOpenModal = () => this.setState({ showModal: true });
 
@@ -53,16 +60,16 @@ class Settings extends Component {
   onCloseLoginModal = () => this.props.history.push("/");
 
   onChange = e =>
-    this.setState({ profile: { ...this.state.profile, [e.target.name]: e.target.value } });
+    this.setState({ user: { ...this.state.user, [e.target.name]: e.target.value } });
 
   onToggle = field =>
-    this.setState(({ profile }) => ({ profile: { ...profile, [field]: !profile[field] } }));
+    this.setState(({ user }) => ({ user: { ...user, [field]: !user[field] } }));
 
   onSubmit = e => {
     e.preventDefault();
 
-    const { profile, errors } = this.state;
-    const { email, name, username } = profile;
+    const { user, errors } = this.state;
+    const { email, name, username, phone } = user;
 
     this.setState(
       {
@@ -71,6 +78,7 @@ class Settings extends Component {
           username: this.validateUsername(username || ""),
           email: this.validateEmail(email || ""),
           name: this.validateName(name || ""),
+          phone: this.validatePhone(phone || ""),
         },
         isLoading: true,
         isSuccess: false,
@@ -81,18 +89,16 @@ class Settings extends Component {
 
   // API methods
   fetchUserProfile = () => {
-    // How the actual fetchUserProfile backend call should look like
-    // api
-    //   .fetchUserProfile()
-    //   .then(({ data }) => this.setState({ user: data, isLoading: false }))
-    //   .catch(() => this.setState({ isError: true, isLoading: false }));
-    api.fetchUserProfile();
+    api
+      .fetchUserProfile()
+      .then(({ data }) => this.setState({ user: data, isLoading: false }))
+      .catch(() => this.setState({ isError: true, isLoading: false }));
   };
 
   updateUserProfile = () => {
-    const { profile, errors } = this.state;
-    if (!errors.email && !errors.name && !errors.username) {
-      api.updateUserProfile(profile);
+    const { user, errors } = this.state;
+    if (!errors.phone && !errors.email && !errors.name && !errors.username) {
+      api.updateUserProfile(user);
     } else {
       this.setState({ isLoading: false, isSuccess: false });
     }
@@ -113,8 +119,8 @@ class Settings extends Component {
   };
 
   render() {
-    const { profile, errors, isLoading, isSuccess } = this.state;
-
+    const { user, errors, isLoading, isSuccess } = this.state;
+  
     return (
       <div className="container container--narrow my-5 px-4">
         <DeleteAccountModal
@@ -137,7 +143,7 @@ class Settings extends Component {
                   name="name"
                   onChange={this.onChange}
                   className="small border-0 py-2 w-100"
-                  value={profile.name}
+                  value={user.name}
                 />
                 {errors.name && (
                   <small className="text-danger text-uppercase ml-2 shake--error">
@@ -159,7 +165,7 @@ class Settings extends Component {
                   type="email"
                   name="email"
                   onChange={this.onChange}
-                  value={profile.email}
+                  value={user.email}
                 />
                 {errors.email && (
                   <small className="text-danger text-uppercase ml-2 shake--error">
@@ -180,7 +186,7 @@ class Settings extends Component {
                   className="small border-0 py-2 w-100"
                   name="username"
                   onChange={this.onChange}
-                  value={profile.username}
+                  value={user.username}
                 />
                 {errors.username && (
                   <small className="text-danger text-uppercase ml-2 shake--error">
@@ -189,6 +195,27 @@ class Settings extends Component {
                 )}
               </div>
               <hr className={errors.username ? "border-danger" : ""} />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-sm-2 col-lg-1">
+              <small className={errors.phone ? "text-danger" : "text-muted"}>Phone Number</small>
+            </div>
+            <div className="col-sm-10 col-lg-11">
+              <div className="d-flex align-items-center">
+                <input
+                  className="small border-0 py-2 w-100"
+                  name="phone"
+                  onChange={this.onChange}
+                  value={user.phone}
+                />
+                {errors.phone && (
+                  <small className="text-danger text-uppercase ml-2 shake--error">
+                    {errors.phone}
+                  </small>
+                )}
+              </div>
+              <hr className={errors.phone ? "border-danger" : ""} />
             </div>
           </div>
           <div className="row">
@@ -202,7 +229,7 @@ class Settings extends Component {
                   type="checkbox"
                   name="email_notification"
                   onChange={() => this.onToggle("email_notification")}
-                  checked={profile.email_notification}
+                  checked={user.email_notification}
                 />
                 <label className="ml-2 small m-0 text-muted font-weight-medium">
                   Receive E-mail Notifications about order statuses
@@ -214,7 +241,7 @@ class Settings extends Component {
                   type="checkbox"
                   name="text_notification"
                   onChange={() => this.onToggle("text_notification")}
-                  checked={profile.text_notification}
+                  checked={user.text_notification}
                 />
                 <label className="ml-2 small m-0 text-muted font-weight-medium">
                   Receive Text Notifications about order statuses
@@ -226,7 +253,7 @@ class Settings extends Component {
                   type="checkbox"
                   name="inapp_notification"
                   onChange={() => this.onToggle("inapp_notification")}
-                  checked={profile.inapp_notification}
+                  checked={user.inapp_notification}
                 />
                 <label className="ml-2 small m-0 text-muted font-weight-medium">
                   Receive In-App Notifications about order statuses

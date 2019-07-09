@@ -51,9 +51,7 @@ export const submitLogin = (username,password,csrf) => {
 }
 
 export const fetchUserProfile = ( username ) => {
-    console.log("TODO: Return User Data ");
-    // return axios.get(`/api/v1/current-profile/?${queryString.stringify({ username })}`);
-    // return axios.get(`/api/v1/current-profile/`);
+    return axios.get(`/api/v1/current/profile/`);
 }
 
 export const getUserName = () => {
