@@ -9,22 +9,23 @@ const ReqUser = ComposedComponent => {
     state = { user: {}, isLoading: false, isError: false };
 
     componentDidMount() {
-      // eslint-disable-next-line react/prop-types
-      const { username } = this.props.match.params;
-      if (username) {
-        this.fetchUserProfile(username);
+
+      if(this.state.user != {}) {
+        // eslint-disable-next-line react/prop-types
+        const { username } = this.props.match.params;
+        if (username) {
+          this.fetchUserProfile(username);
+        }
       }
     }
 
     fetchUserProfile = username => {
       this.setState({ isLoading: true });
-      // How the Actual Backend Call Should Look Like
-      // api
-      //   .fetchUserProfile(username)
-      //   .then(({ data }) => this.setState({ user: data, isLoading: false }))
-      //   .catch(() => this.setState({ isError: true, isLoading: false }));
-      api.getUserName()
-      this.setState({ isLoading: false })
+      api
+        .fetchUserProfile(username)
+        .then(({ data }) => this.setState({ user: data, isLoading: false }))
+        .catch(() => this.setState({ isError: true, isLoading: false }));
+
     };
 
     render() {
@@ -41,7 +42,7 @@ const ReqUser = ComposedComponent => {
       if (isError || (!isLoading && Object.keys(user).length === 0)) {
         return <NotFound />;
       }
-      return <ComposedComponent {...this.props} profile={user} />;
+      return <ComposedComponent {...this.props} user={user} />;
     }
   }
 

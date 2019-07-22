@@ -57,7 +57,7 @@ export const fetchUserProfile = ( username ) => {
 export const getUserName = () => {
     console.log("backend call to get User Data")
     const user = {
-      username : "test-username"
+      username : "admin"
     }
     return user;
 };
