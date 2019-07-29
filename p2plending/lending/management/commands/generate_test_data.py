@@ -4,6 +4,7 @@ from lending.factories import LocationFactory
 from lending.factories import LoanFactory
 from lending.factories import ItemFactory
 from lending.factories import ProfileFactory
+from lending.factories import TitleRequestFactory
 from lending.models import Title
 from django.conf import settings
 import requests
@@ -32,22 +33,39 @@ class Command(BaseCommand):
                 print("aborting")
                 return
 
-        l = LocationFactory(name="Branch Library")
+        LocationFactory(name="Branch Library")
         n = options['num-titles'][0]
         x = TitleFactory.create_batch(n,item='')
-        print(x[0])
+        if n<3:
+            num_of_locations=n
+        else:
+            num_of_locations=3
+        e = LocationFactory.create_batch(num_of_locations)
+        profile_list=[]
+        for o in range(n):
+            temp_o=o
+            if num_of_locations <= temp_o:
+                temp_o-=3
+            print(temp_o)
+            location=e[temp_o]
+            q = profile_list.append(ProfileFactory.create_batch(1,primary_location=location))
         if options.get("loans_and_requests", False):   #Keep this as an underscore or it breaks
-            q = ProfileFactory.create_batch(n)
+            loan_list=[]
             for y in range(n):
                 title=x[y]
-                owner=q[y]
-                LoanFactory.create_batch(1,item=factory.SubFactory(ItemFactory, title=title,owner=owner),borrower=owner)
+                owner=profile_list[y][0]
+                loan_list.append(LoanFactory.create_batch(1,item=factory.SubFactory(ItemFactory, title=title,owner=owner),borrower=owner))
+            for t in range(n):
+                requester = profile_list[t][0]
+                title = x[t]
+                loan=loan_list[t][0]
+                TitleRequestFactory.create_batch(1,requester=requester,title = title,loan=loan)
             #TODO: Figure out if you need to decouple number of loans from titles and if so, find out how and implement
-            #TODO: Figure out why it keeps erroring out when I delete stuff
         else:
             for z in range(n):
                 title = x[z]
+                owner = profile_list[z][0]
                 print(title)
-                ItemFactory.create_batch(1, title=title)
+                ItemFactory.create_batch(1, title=title,owner=owner)
 
 
