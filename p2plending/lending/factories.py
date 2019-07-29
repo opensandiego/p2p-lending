@@ -1,9 +1,9 @@
-import factory
 import factory.fuzzy
 from django.contrib.auth.models import User
-from .models import Location,Profile,Title,Item,Loan,TitleRequest,LANGUAGES,MEDIA_TYPES
+from .models import Location,Profile,Title,Item,Loan,TitleRequest,LANGUAGES,MEDIA_TYPES,LOAN_PERIOD,LOAN_STATUS
 from django.conf.global_settings import LANGUAGES 
 from django.utils.timezone import now
+from datetime import timedelta
 import random
 
 class UserFactory(factory.DjangoModelFactory):
@@ -55,8 +55,22 @@ class TitleFactory(factory.DjangoModelFactory):
     item = factory.RelatedFactory(ItemFactory,"title")
     author = factory.Sequence(lambda n: fuzz_name(n))
     publish_year = factory.fuzzy.FuzzyInteger(1700,now().year)
-
-
+class LoanFactory(factory.DjangoModelFactory):
+    class Meta:
+        model = Loan
+    borrower = factory.SubFactory(ProfileFactory)
+    item = factory.SubFactory(ItemFactory)
+    start_date = now()
+    due_date = now()+timedelta(days=LOAN_PERIOD)
+    status = random.choice([x[0] for x in LOAN_STATUS])
+# class TitleRequestFactory(factory.DjangoModelFactory):
+#     class Meta:
+#         model = TitleRequest
+#     requester = factory.SubFactory(ProfileFactory)
+#     title =
+#     request_date =
+#     loan =
+#     status =
 # Todo maybe make this a factoryboy custom fuzzy attr
 adj = ["Epic","Amazing","Thrilling","Subtle","Verbose","Harrowing","Hilarious"]
 noun = ["Adventure","Fantasy","Mystery","History","Story","Tale","Opus","Tome"]
@@ -72,4 +86,4 @@ def fuzz_title(n):
 def fuzz_name(n):
     return "%s %s %i" %(random.choice(first),random.choice(last),n)
 
-    
+
