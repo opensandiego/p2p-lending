@@ -17,6 +17,8 @@
 
 The Linda Vista Library is looking to explore a Peer-to-Peer lending program, faciliated by the library. The goal is to provide patrons with access to harder to find books not in the broader San Diego collection, specifically foreign language books. The program will be managed by the Library staff, but they will need software to help them manage the catalog of available books in the community, as well as manage the request / loan / return process. This project will be the buildout of the software.
 
+[Wireframes / Structure](https://docs.google.com/document/d/1dqKQ-61zKI5v8JVMnoC4fhZb6zEDsHhZ16ZZLcNTzzM/edit)
+
 ### <a name="section_goal"></a>Goal
 
 - Prototype goal: Develop minimmum-viable-product for facilitating p2p lending at the Linda Vista Library 
