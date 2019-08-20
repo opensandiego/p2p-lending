@@ -9,6 +9,7 @@ import CallToAction from "../../components/CallToAction";
 import { getFlagEmoji } from "../../components/componentUtils/getFlag";
 
 import { hasParamInUrlChanged } from "../../components/componentUtils/routerUrls";
+import * as localStorage from "../../components/componentUtils/localStorage";
 
 class TitleIndividual extends Component {
   static defaultProps = { match: { params: {} } };
@@ -16,7 +17,8 @@ class TitleIndividual extends Component {
     searchString: "",
     title: {},
     showLoginModal: false,
-    showSignupModal: false
+    showSignupModal: false,
+    isLoggedIn: false,
   }
   onOpenLoginModal = () => this.setState({ showLoginModal: true });
   onOpenSignupModal = () => this.setState({ showSignupModal: true });
@@ -44,6 +46,10 @@ class TitleIndividual extends Component {
     }
   };
 
+  requestItem = () => {
+    console.log(this.state.title);
+  }
+
   componentDidUpdate(prevProps) {
     if (!hasParamInUrlChanged(prevProps.match, this.props.match, "titleID")) {
       return;
@@ -52,12 +58,23 @@ class TitleIndividual extends Component {
     this.fetchTitleContentsAndUpdateState();
   }
 
+  checkLoggedIn(){
+    if(localStorage.getAuthKey()){
+      this.setState({ isLoggedIn: true });
+    }
+    else{
+      this.setState({ isLoggedIn: false });
+    }
+  }
+
   componentDidMount(){
     this.fetchTitleContentsAndUpdateState();
+    this.checkLoggedIn();
   }
 
   render() {
-    const { title } = this.state
+    const { title, isLoggedIn } = this.state
+    
     const flagStyle = {
       border: "1px solid lightgray", 
       objectFit: 'none'}
@@ -168,14 +185,26 @@ class TitleIndividual extends Component {
               </button>
             </div>
             <div className="col"> 
-              <button
-                className="btn btn-outline-success m-2"
-                onClick={() => {
-                  this.onOpenLoginModal();
-                }}
-              >
-                Request
-              </button>
+              {isLoggedIn === false && (
+                <button
+                  className="btn btn-outline-success m-2"  
+                  onClick={() => {
+                    this.onOpenLoginModal();
+                  }}
+                >
+                  Request
+                </button>
+              )}
+              {isLoggedIn === true && (
+                <button
+                  className="btn btn-outline-success m-2"  
+                  onClick={() => {
+                    this.requestItem();
+                  }}
+                >
+                  Request
+                </button>
+              )}  
             </div>
           </div>
         </div>

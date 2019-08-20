@@ -49,16 +49,12 @@ class OrderStatus extends Component {
     const { user } = this.props;
     const { activeTab, isRedirect } = this.state;
 
-    console.log("State in Order Status")
-    console.log(this.state)
-
     console.log("User Props in Order Status")
     console.log(user)
 
     if (isRedirect) {
       return <Redirect to="/" />;
     }
-
 
     return (
 
