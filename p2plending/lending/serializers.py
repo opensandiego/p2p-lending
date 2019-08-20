@@ -72,3 +72,11 @@ class TitleRequestSerializer(serializers.ModelSerializer):
         model = TitleRequest
         fields = ('id','request_date','status')
 
+    def to_representation(self, obj):
+        result = super(TitleRequestSerializer,self).to_representation(obj)
+        result['title'] = TitleSerializer(obj.title).data
+        result['queue_position'] = obj.queue_position()
+        return result
+
+
+

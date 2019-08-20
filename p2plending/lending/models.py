@@ -179,6 +179,9 @@ class TitleRequest(models.Model):
     loan = models.ForeignKey(Loan,blank=True,null=True,on_delete=models.SET_NULL)
     status = models.CharField(max_length=255,default="pending",choices=REQUEST_STATUS)
 
+    def queue_position(self):
+        return self.title.queued_requests().filter(request_date__gt=self.request_date).count()
+
     def process_request(self):
         next_item = self.title.get_next_item()
         if next_item != None:

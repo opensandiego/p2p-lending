@@ -9,6 +9,7 @@ router.register(r'available-languages', views.LanguagesViewSet, 'available-langu
 router.register(r'current/profile', authenticated_views.ProfileViewSet, 'current-profile' )
 router.register(r'current/borrowing', authenticated_views.BorrowedLoanViewSet, 'borrowed-loans' )
 router.register(r'current/lending', authenticated_views.OwnerLoanViewSet, 'owner-loans' )
+router.register(r'current/requests', authenticated_views.UsersTitleRequestsViewSet, 'title-requests' )
 router.register(r'request-title', authenticated_views.RequestTitleViewSet, 'request-title' )
 
 urlpatterns = [

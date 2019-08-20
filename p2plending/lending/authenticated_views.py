@@ -1,6 +1,6 @@
 from rest_framework import viewsets
 from rest_framework.response import Response
-from .models import Profile,Loan
+from .models import Profile,Loan,TitleRequest
 from .serializers import ProfileSerializer,BorrowerLoanSerializer,OwnerLoanSerializer,TitleRequestSerializer
 
 
@@ -50,8 +50,20 @@ class OwnerLoanViewSet(viewsets.GenericViewSet,ProfileAuthViewMixin):
         return Loan.objects.filter(item__owner=profile,status="on-loan") 
 
     def list(self,request,format=None):
-        borrowed_loans = self.get_queryset()
-        return Response( OwnerLoanSerializer(borrowed_loans, many=True, context={'request':request}).data )
+        owner_loans = self.get_queryset()
+        return Response( OwnerLoanSerializer(owner_loans, many=True, context={'request':request}).data )
+
+
+class UsersTitleRequestsViewSet(viewsets.GenericViewSet,ProfileAuthViewMixin):
+    def get_queryset(self):
+        profile = self.get_profile()
+        if profile == None:
+            return TitleRequest.objects.none()
+        return TitleRequest.objects.filter(requester=profile,status="requested") 
+
+    def list(self,request,format=None):
+        my_requests = self.get_queryset()
+        return Response( TitleRequestSerializer(my_requests, many=True, context={'request':request}).data )
 
 class RequestTitleViewSet(viewsets.GenericViewSet,ProfileAuthViewMixin):
     serializer_class = TitleRequestSerializer
