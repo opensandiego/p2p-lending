@@ -59,6 +59,15 @@ class LoanAdmin(admin.ModelAdmin):
     list_display = ("item","status","due_date","borrower")
     liat_filter = ("status","due_date")
     raw_id_fields = ("borrower","item","renewal_of")
+    actions = ["confirm_lender_dropoff"]
+
+    def confirm_lender_dropoff(self,request,queryset):
+        confirmed = 0
+        for loan in queryset:
+            loan.confirm_lender_dropoff()
+            confirmed += 1
+        self.message_user(request,"confirmed %i drop offs" % confirmed)
+
 admin.site.register(Loan,LoanAdmin)
 
 class ItemAdmin(admin.ModelAdmin):

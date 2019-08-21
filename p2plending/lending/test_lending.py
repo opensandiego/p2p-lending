@@ -66,3 +66,26 @@ class LendingTestCase(TestCase):
                 self.assertEqual(expected[ic["status"]],ic["count"])
             self.assertEqual(ic["count"],Item.objects.filter(status="available").count())
 
+
+    def test_loan_process(self):
+        title = TitleFactory()
+        borrower = ProfileFactory(name="Borrower")
+
+        title_request = title.create_request(borrower)
+        loan = title.process_next_request()
+        self.assertNotEqual(loan,None)
+        self.assertEqual(loan.status,"requested")
+
+        loan.confirm_lender_dropoff()
+        self.assertEqual(loan.status,"available") 
+        # TODO test that we sent a notification to the borrower
+
+        loan.confirm_borrower_pickup()
+        self.assertEqual(loan.status,"on-loan")
+
+        loan.confirm_borrower_return()
+        self.assertEqual(loan.status,"returned")
+        # TODO test that we sent a notification to the lender
+
+        loan.confirm_lender_pickup()
+        self.assertEqual(loan.status,"complete")

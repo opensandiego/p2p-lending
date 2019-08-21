@@ -171,7 +171,33 @@ class Loan(models.Model):
     due_date = models.DateTimeField()
     renewal_of = models.ForeignKey("self",blank=True,null=True,on_delete=models.SET_NULL)
     status = models.CharField(max_length=16,choices=LOAN_STATUS,default="requested")
- 
+
+    def confirm_lender_dropoff(self):
+        self.status = "available"
+        self.save()
+        # TODO Notify borrower that their loan is available
+
+    def confirm_borrower_pickup(self):
+        self.status = "on-loan"
+        self.save()
+
+    def confirm_borrower_return(self):
+        self.status = "returned"
+        self.save()
+        # TODO Notify lender that their item is ready for pickup
+
+    def confirm_lender_pickup(self):
+        self.status = "complete"
+        self.save()
+
+    def mark_item_lost(self):
+        self.status = "lost"
+        self.save()
+
+    def record_return_issue(self):
+        self.status = "return-issue"
+        self.save()
+
 class TitleRequest(models.Model):
     requester = models.ForeignKey(Profile,on_delete=models.SET_NULL,null=True)  
     title = models.ForeignKey(Title,on_delete=models.CASCADE)
