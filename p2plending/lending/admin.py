@@ -59,7 +59,7 @@ class LoanAdmin(admin.ModelAdmin):
     list_display = ("item","status","due_date","borrower")
     liat_filter = ("status","due_date")
     raw_id_fields = ("borrower","item","renewal_of")
-    actions = ["confirm_lender_dropoff"]
+    actions = ["confirm_lender_dropoff","confirm_borrower_return","confirm_lender_pickup"]
 
     def confirm_lender_dropoff(self,request,queryset):
         confirmed = 0
@@ -67,6 +67,20 @@ class LoanAdmin(admin.ModelAdmin):
             loan.confirm_lender_dropoff()
             confirmed += 1
         self.message_user(request,"confirmed %i drop offs" % confirmed)
+
+    def confirm_borrower_pickup(self,request,queryset):
+        confirmed = 0
+        for loan in queryset:
+            loan.confirm_borrower_pickup()
+            confirmed += 1
+        self.message_user(request,"confirmed %i borrower pickups" % confirmed)
+    def confirm_borrower_return(self,request,queryset):
+        confirmed = 0
+        for loan in queryset:
+            loan.confirm_borrower_return()
+            confirmed += 1
+        self.message_user(request,"confirmed %i borrow returns" % confirmed)
+    
 
 admin.site.register(Loan,LoanAdmin)
 
