@@ -19,7 +19,6 @@ class Command(BaseCommand):
                 action="store_true",
                 help="flag to indicate to generate active loans and requests",
         )
-
     def handle(self, *args, **options):
         if not settings.DEBUG:
             print("WARNING: you are not in DEBUG mode, are you sure you want to continue? Y/N")
@@ -67,5 +66,3 @@ class Command(BaseCommand):
                 owner = profile_list[z][0]
                 print(title)
                 ItemFactory.create_batch(1, title=title,owner=owner)
-
-
