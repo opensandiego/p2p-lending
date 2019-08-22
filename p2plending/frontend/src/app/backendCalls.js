@@ -62,22 +62,14 @@ export const fetchRequestInfo = () => {
     return axios.get(`/api/v1/current/requests/`);
 }
 
-export const fetchUserProfile = ( username ) => {
-    console.log("backend call to get Profile Data")
+export const fetchUserProfile = () => {
     return axios.get(`/api/v1/current/profile/`);
 }
 
-export const getUserName = () => {
-    const user = {
-      username : "admin"
-    }
-    return user;
-};
-
 export const deleteUserProfile = () => {
-    console.log("delete User Profile from database");
+    console.log("TODO:: delete User Profile from database");
 };
 export const updateUserProfile = (profile) => {
-    console.log("backend call update User Data");
+    console.log("TODO:: backend call update User Data");
     console.log(profile);
 };

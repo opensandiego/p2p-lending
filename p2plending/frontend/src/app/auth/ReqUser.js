@@ -12,24 +12,20 @@ const ReqUser = ComposedComponent => {
 
       if(this.state.user != {}) {
         // eslint-disable-next-line react/prop-types
-        const { username } = this.props.match.params;
-        if (username) {
-          this.fetchUserProfile(username);
-        }
+          this.fetchUserProfile();
       }
     }
 
-    fetchUserProfile = username => {
+    fetchUserProfile = () => {
       this.setState({ isLoading: true });
       api
-        .fetchUserProfile(username)
+        .fetchUserProfile()
         .then(({ data }) => this.setState({ user: data, isLoading: false }))
         .catch(() => this.setState({ isError: true, isLoading: false }));
     };
 
     render() {
       const { user, isLoading, isError } = this.state;
-
       if (isLoading) {
         return (
           <div className="container my-5">

@@ -38,8 +38,7 @@ class OrderStatus extends Component {
   }
 
   onTabSelect = value => {
-    const { username } = this.props.match.params;
-    this.props.history.push(`/${username}/${value}`);
+    this.props.history.push(`/order-status/${value}`);
     this.setState({ activeTab: value });
   };
   

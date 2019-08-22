@@ -4,12 +4,11 @@ import LoginModal from "./auth/LoginModal";
 import SignupModal from "./auth/SignupModal";
 import * as localStorage from "../components/componentUtils/localStorage";
 import Tooltip from "rc-tooltip";
-import * as api from "./backendCalls";
 
-const OptionsToolTip = ({ user }) => (
+const OptionsToolTip = () => (
   <div className="tooltip-content">
     <div className="tooltip-item">
-      <Link className="text-secondary" to={`/${user.username}`} disabled={!user.username}>
+      <Link className="text-secondary" to={`/order-status`}>
         Order Status
       </Link>
     </div>
@@ -57,7 +56,6 @@ class Header extends Component {
     // If CSRF Token is in Local Storage then request user name/profile info
     // If both are present then you can display User Information Instead of Login/Signup Button
     const authenticated = localStorage.getAuthKey();
-    const user = authenticated ? api.getUserName() : {};
 
     return (
       <div className="header">
@@ -81,7 +79,7 @@ class Header extends Component {
                     <Tooltip
                       placement="bottomRight"
                       trigger={["click"]}
-                      overlay={<OptionsToolTip user={user} />}
+                      overlay={<OptionsToolTip />}
                       id="header-logout"
                     >
                       <div className="position-relative">
@@ -111,7 +109,8 @@ class Header extends Component {
                       <small className="font-weight-bold">SIGN UP</small>
                     </button>
                   </li>,
-                ]}
+                ]
+            }
           </ul>
         </div>
       </div>

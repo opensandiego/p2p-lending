@@ -33,8 +33,8 @@ class App extends Component {
               <Route exact path="/language/:languageID" component={LanguageResults} />
               <Route exact path="/titles/:titleID" exact component={TitleIndividual} />
               <Route exact path="/settings/profile" component={Settings} />
-              <Route exact path="/:username" component={ReqUser(OrderStatus)} />
-              <Route exact path="/:username/:tabName" component={ReqUser(OrderStatus)} />
+              <Route exact path="/order-status" component={ReqUser(OrderStatus)} />
+              <Route exact path="/order-status/:tabName" component={ReqUser(OrderStatus)} />
               <Route exact path="/about" component={About} />
               <Route exact path="/privacy" component={Privacy} />
               <Route exact path="/terms" component={Terms} />
