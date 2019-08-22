@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
 /* eslint-disable react/prop-types */
 import React, { Component } from "react";
-import LentSection from "./LentSection";
-import LoansSection from "./LoansSection";
-import RequestsSection from "./RequestsSection";
+import LentSection from "../profile/LentSection";
+import LoansSection from "../profile/LoansSection";
+import RequestsSection from "../profile/RequestsSection";
 import { Redirect } from "react-router-dom";
 import Tab from "../../components/Tab";
 
@@ -48,9 +48,6 @@ class OrderStatus extends Component {
   render() {
     const { user } = this.props;
     const { activeTab, isRedirect } = this.state;
-
-    console.log("User Props in Order Status")
-    console.log(user)
 
     if (isRedirect) {
       return <Redirect to="/" />;

@@ -50,12 +50,24 @@ export const submitLogin = (username,password,csrf) => {
     );
 }
 
+export const fetchBorrowingInfo = () => {
+    return axios.get(`/api/v1/current/borrowing/`);
+}
+
+export const fetchLendingInfo = () => {
+    return axios.get(`/api/v1/current/lending/`);
+}
+
+export const fetchRequestInfo = () => {
+    return axios.get(`/api/v1/current/requests/`);
+}
+
 export const fetchUserProfile = ( username ) => {
+    console.log("backend call to get Profile Data")
     return axios.get(`/api/v1/current/profile/`);
 }
 
 export const getUserName = () => {
-    console.log("backend call to get User Data")
     const user = {
       username : "admin"
     }

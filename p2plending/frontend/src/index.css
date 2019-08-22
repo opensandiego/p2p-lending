@@ -140,8 +140,17 @@ h1 {
   width: 400px;
 }
 
+.order-status-state{
+  position: absolute;
+  top: 10px;
+}
+.order-status-status{
+  text-transform: uppercase;
+  font-weight: 500;
+}
 .title-item {
   height: 350px;
+  min-width: 250px;
 }
 
 .title-item .item-link {

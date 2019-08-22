@@ -25,7 +25,6 @@ const ReqUser = ComposedComponent => {
         .fetchUserProfile(username)
         .then(({ data }) => this.setState({ user: data, isLoading: false }))
         .catch(() => this.setState({ isError: true, isLoading: false }));
-
     };
 
     render() {

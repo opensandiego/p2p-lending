@@ -14,7 +14,7 @@ import Logout from "../components/auth/Logout";
 import Settings from "./settings/Settings"
 import NotFound from "../components/NotFound";
 import ScrollToTop from "../components/ScrollToTop";
-import OrderStatus from "./profile/OrderStatus";
+import OrderStatus from "./orderstatus/OrderStatus";
 import ReqUser from "./auth/ReqUser";
 
 class App extends Component {
