@@ -166,7 +166,7 @@ class TitleIndividual extends Component {
                 className="position-absolute d-flex align-items-center"
                 style={{ bottom: "15px", right: "18px" }}
               >
-                <img alt="" height="20" width="32" ml-1 p-1 style={flagStyle} src={getFlagEmoji(title.language, 'flat/32')} />
+                <img alt="" height="20" width="32" className="ml-1 p-1" style={flagStyle} src={getFlagEmoji(title.language, 'flat/32')} />
               </div>
             )}
           </div>    

@@ -50,22 +50,26 @@ export const submitLogin = (username,password,csrf) => {
     );
 }
 
-export const fetchUserProfile = ( username ) => {
+export const fetchBorrowingInfo = () => {
+    return axios.get(`/api/v1/current/borrowing/`);
+}
+
+export const fetchLendingInfo = () => {
+    return axios.get(`/api/v1/current/lending/`);
+}
+
+export const fetchRequestInfo = () => {
+    return axios.get(`/api/v1/current/requests/`);
+}
+
+export const fetchUserProfile = () => {
     return axios.get(`/api/v1/current/profile/`);
 }
 
-export const getUserName = () => {
-    console.log("backend call to get User Data")
-    const user = {
-      username : "admin"
-    }
-    return user;
-};
-
 export const deleteUserProfile = () => {
-    console.log("delete User Profile from database");
+    console.log("TODO:: delete User Profile from database");
 };
 export const updateUserProfile = (profile) => {
-    console.log("backend call update User Data");
+    console.log("TODO:: backend call update User Data");
     console.log(profile);
 };
