@@ -48,6 +48,8 @@ class TitleIndividual extends Component {
 
   requestItem = () => {
     console.log(this.state.title);
+    api.postRequestTitle(this.state.title.id).
+      then(({ response }) => { return response  });
   }
 
   componentDidUpdate(prevProps) {

@@ -66,6 +66,10 @@ export const fetchUserProfile = () => {
     return axios.get(`/api/v1/current/profile/`);
 }
 
+export const postRequestTitle = (title_id) => {
+    return axios.post(`/api/v1/request-title/`);
+}
+
 export const deleteUserProfile = () => {
     console.log("TODO:: delete User Profile from database");
 };
