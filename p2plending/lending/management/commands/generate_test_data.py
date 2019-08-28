@@ -5,10 +5,11 @@ from lending.factories import LoanFactory
 from lending.factories import ItemFactory
 from lending.factories import ProfileFactory
 from lending.factories import TitleRequestFactory
-from lending.models import Title
+from lending.models import Title,LOAN_STATUS
 from django.conf import settings
 import requests
 import factory
+import random
 
 class Command(BaseCommand):
     help = 'Generates test data for lending database. WARNING this will ADD data'
@@ -42,27 +43,25 @@ class Command(BaseCommand):
         e = LocationFactory.create_batch(num_of_locations)
         profile_list=[]
         for o in range(n):
-            temp_o=o
-            if num_of_locations <= temp_o:
-                temp_o-=3
-            print(temp_o)
+            temp_o=o%3
             location=e[temp_o]
-            q = profile_list.append(ProfileFactory.create_batch(1,primary_location=location))
+            q = profile_list.append(ProfileFactory(primary_location=location))
         if options.get("loans_and_requests", False):   #Keep this as an underscore or it breaks
             loan_list=[]
             for y in range(n):
                 title=x[y]
-                owner=profile_list[y][0]
-                loan_list.append(LoanFactory.create_batch(1,item=factory.SubFactory(ItemFactory, title=title,owner=owner),borrower=owner))
+                owner=profile_list[y]
+                status = random.choice([x[0] for x in LOAN_STATUS])
+                loan_list.append(LoanFactory(item=factory.SubFactory(ItemFactory, title=title,owner=owner),borrower=owner,status=status))
             for t in range(n):
-                requester = profile_list[t][0]
+                requester = profile_list[t]
                 title = x[t]
-                loan=loan_list[t][0]
+                loan=loan_list[t]
                 TitleRequestFactory.create_batch(1,requester=requester,title = title,loan=loan)
             #TODO: Figure out if you need to decouple number of loans from titles and if so, find out how and implement
         else:
             for z in range(n):
                 title = x[z]
-                owner = profile_list[z][0]
+                owner = profile_list[z]
                 print(title)
                 ItemFactory.create_batch(1, title=title,owner=owner)
