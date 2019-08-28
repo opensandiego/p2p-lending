@@ -1,4 +1,5 @@
-from rest_framework import viewsets
+from rest_framework import viewsets,status
+from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 from .models import Profile,Loan,TitleRequest
 from .serializers import ProfileSerializer,BorrowerLoanSerializer,OwnerLoanSerializer,TitleRequestSerializer
@@ -71,7 +72,7 @@ class RequestTitleViewSet(viewsets.GenericViewSet,ProfileAuthViewMixin):
     def get_queryset(self):
         return Title.objects.all()
 
-    def create(self,request,title_id):
-        print(self.request.data) 
-        return Response({})
-
+    def post(self, request, *args, **kwargs):
+        print("Got Create TitleRequest",self.request.data) 
+        headers = {}
+        return Response(self.request.data, status=status.HTTP_201_CREATED, headers=headers)

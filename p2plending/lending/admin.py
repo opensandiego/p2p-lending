@@ -57,7 +57,8 @@ admin.site.register(TitleRequest,TitleRequestAdmin)
 
 class LoanAdmin(admin.ModelAdmin):
     list_display = ("item","status","due_date","borrower")
-    liat_filter = ("status","due_date")
+    list_filter = ("status","due_date")
+    search_fields = ("borrower__name","borrower__library_card","item__title__title","item__guid")
     raw_id_fields = ("borrower","item","renewal_of")
     actions = ["confirm_lender_dropoff"]
 
