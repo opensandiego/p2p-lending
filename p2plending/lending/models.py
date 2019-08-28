@@ -188,17 +188,22 @@ class Loan(models.Model):
 
     def confirm_lender_pickup(self):
         self.status = "complete"
-        # We remove the borrower history on this loan after it is complete
-        # to preserve confidentiality
-        self.borrower = None
-        self.save()
+        self.finalize()
 
     def mark_item_lost(self):
         self.status = "lost"
-        self.save()
+        self.finalize(item_status="unavailable")
 
     def record_return_issue(self):
         self.status = "return-issue"
+        self.finalize(item_status="unavailable")
+
+    def finalize(self,item_status="available"):
+        # When we are finished with a loan, we want to
+        # remove the borrower's history to preserve confidentiality
+        self.borrower = None
+        self.item.status = item_status
+        self.item.save()
         self.save()
 
 class TitleRequest(models.Model):
