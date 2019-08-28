@@ -89,3 +89,5 @@ class LendingTestCase(TestCase):
 
         loan.confirm_lender_pickup()
         self.assertEqual(loan.status,"complete")
+        # Confirm that after the book is returned we remove the borrower history
+        self.assertEqual(loan.borrower,None)

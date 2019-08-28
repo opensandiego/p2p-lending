@@ -188,6 +188,9 @@ class Loan(models.Model):
 
     def confirm_lender_pickup(self):
         self.status = "complete"
+        # We remove the borrower history on this loan after it is complete
+        # to preserve confidentiality
+        self.borrower = None
         self.save()
 
     def mark_item_lost(self):
