@@ -60,7 +60,7 @@ class LoanAdmin(admin.ModelAdmin):
     list_filter = ("status","due_date")
     search_fields = ("borrower__name","borrower__library_card","item__title__title","item__guid")
     raw_id_fields = ("borrower","item","renewal_of")
-    actions = ["confirm_lender_dropoff"]
+    actions = ["confirm_lender_dropoff","confirm_borrower_pickup","confirm_lender_return","confirm_lender_pickup","mark_item_lost","record_return_issue"]
 
     def confirm_lender_dropoff(self,request,queryset):
         confirmed = 0
@@ -68,6 +68,37 @@ class LoanAdmin(admin.ModelAdmin):
             loan.confirm_lender_dropoff()
             confirmed += 1
         self.message_user(request,"confirmed %i drop offs" % confirmed)
+
+    def confirm_borrower_pickup(self,request,queryset):
+        confirmed = 0
+        for loan in queryset:
+            loan.confirm_borrower_pickup()
+            confirmed += 1
+        self.message_user(request,"confirmed %i borrower pickups" % confirmed)
+    def confirm_borrower_return(self,request,queryset):
+        confirmed = 0
+        for loan in queryset:
+            loan.confirm_borrower_return()
+            confirmed += 1
+        self.message_user(request,"confirmed %i borrower returns" % confirmed)
+    def confirm_lender_pickup(self,request,queryset):
+        confirmed = 0
+        for loan in queryset:
+            loan.confirm_lender_pickup()
+            confirmed += 1
+        self.message_user(request,"confirmed %i lender pickups" % confirmed)
+    def mark_item_lost(self,request,queryset):
+        confirmed = 0
+        for loan in queryset:
+            loan.mark_item_lost()
+            confirmed += 1
+        self.message_user(request,"marked %i items lost" % confirmed)
+    def record_return_issue(self,request,queryset):
+        confirmed = 0
+        for loan in queryset:
+            loan.record_return_issue()
+            confirmed += 1
+        self.message_user(request,"recored %i issues" % confirmed)
 
 admin.site.register(Loan,LoanAdmin)
 
