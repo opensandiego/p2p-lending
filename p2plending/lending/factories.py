@@ -33,7 +33,9 @@ class ProfileFactory(factory.DjangoModelFactory):
     name = factory.Sequence(lambda n: fuzz_name(n))
     email =  factory.Sequence(lambda n: 'user{0}@example.com'.format(n))
     phone =  factory.Sequence(lambda n: '555-555-%04i' % n)
-    notify_by = "email"
+    email_notifications = True
+    sms_notifications = False
+    inapp_notifications = False
 
 class ItemFactory(factory.DjangoModelFactory):
     class Meta:
