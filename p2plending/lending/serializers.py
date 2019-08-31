@@ -34,8 +34,8 @@ class ProfileSerializer(serializers.ModelSerializer):
                     'email',
                     'notify_by',
                     'email_notifications',
-                    'email_notifications',
-                    'email_notifications',
+                    'sms_notifications',
+                    'inapp_notifications',
                     'primary_location',
         )
 

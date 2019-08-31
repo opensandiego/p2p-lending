@@ -28,7 +28,6 @@ REQUEST_STATUS = (
     ("canceled", "Canceled"),
     ("complete", "Completed"),
 )
-#NOTIFY_BY = (("email","email"),("sms","sms"))
 
 class Location(models.Model):
     name = models.CharField(max_length=255) 
