@@ -79,10 +79,6 @@ class LoanAdmin(admin.ModelAdmin):
         for loan in queryset:
             loan.confirm_borrower_return()
             confirmed += 1
-<<<<<<< HEAD
-        self.message_user(request,"confirmed %i borrow returns" % confirmed)
-    
-=======
         self.message_user(request,"confirmed %i borrower returns" % confirmed)
     def confirm_lender_pickup(self,request,queryset):
         confirmed = 0
@@ -102,7 +98,6 @@ class LoanAdmin(admin.ModelAdmin):
             loan.record_return_issue()
             confirmed += 1
         self.message_user(request,"recored %i issues" % confirmed)
->>>>>>> a1865ae482953592bb5afbc6d843d6daf9998a4e
 
 admin.site.register(Loan,LoanAdmin)
 
