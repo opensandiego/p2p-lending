@@ -14,7 +14,7 @@ class Settings extends Component {
     showModal: false,
     showLoginModal: false,
     isSuccess: false,
-    user: { name: "", email: "", username: "", phone: "", primary_location: "1", preferred_language: null, email_notification: false, text_notification: false, inapp_notification: false   },
+    user: { name: "", email: "", username: "", phone: "", primary_location: "1", preferred_language: null, email_notifications: false, sms_notifications: false, inapp_notifications: false   },
     errors: { email: undefined, name: undefined, phone: undefined },
   };
 
@@ -120,7 +120,7 @@ class Settings extends Component {
 
   render() {
     const { user, errors, isLoading, isSuccess } = this.state;
-  
+    console.log(user)
     return (
       <div className="container container--narrow my-5 px-4">
         <DeleteAccountModal
@@ -227,9 +227,9 @@ class Settings extends Component {
                 <input
                   className="small border-0 py-2"
                   type="checkbox"
-                  name="email_notification"
-                  onChange={() => this.onToggle("email_notification")}
-                  checked={user.email_notification}
+                  name="email_notifications"
+                  onChange={() => this.onToggle("email_notifications")}
+                  checked={user.email_notifications}
                 />
                 <label className="ml-2 small m-0 text-muted font-weight-medium">
                   Receive E-mail Notifications about order statuses
@@ -239,9 +239,9 @@ class Settings extends Component {
                 <input
                   className="small border-0 py-2"
                   type="checkbox"
-                  name="text_notification"
-                  onChange={() => this.onToggle("text_notification")}
-                  checked={user.text_notification}
+                  name="sms_notifications"
+                  onChange={() => this.onToggle("sms_notifications")}
+                  checked={user.sms_notifications}
                 />
                 <label className="ml-2 small m-0 text-muted font-weight-medium">
                   Receive Text Notifications about order statuses
@@ -251,9 +251,9 @@ class Settings extends Component {
                 <input
                   className="small border-0 py-2"
                   type="checkbox"
-                  name="inapp_notification"
-                  onChange={() => this.onToggle("inapp_notification")}
-                  checked={user.inapp_notification}
+                  name="inapp_notifications"
+                  onChange={() => this.onToggle("inapp_notifications")}
+                  checked={user.inapp_notifications}
                 />
                 <label className="ml-2 small m-0 text-muted font-weight-medium">
                   Receive In-App Notifications about order statuses
