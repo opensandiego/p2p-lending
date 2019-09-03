@@ -55,6 +55,7 @@ class TitleFactory(factory.DjangoModelFactory):
     item = factory.RelatedFactory(ItemFactory,"title")
     author = factory.Sequence(lambda n: fuzz_name(n))
     publish_year = factory.fuzzy.FuzzyInteger(1700,now().year)
+
 class LoanFactory(factory.DjangoModelFactory):
     class Meta:
         model = Loan
@@ -63,6 +64,7 @@ class LoanFactory(factory.DjangoModelFactory):
     start_date = now()
     due_date = now()+timedelta(days=LOAN_PERIOD)
     status = random.choice([x[0] for x in LOAN_STATUS])
+
 class TitleRequestFactory(factory.DjangoModelFactory):
     class Meta:
         model = TitleRequest
@@ -71,6 +73,7 @@ class TitleRequestFactory(factory.DjangoModelFactory):
     loan = factory.SubFactory(LoanFactory, borrower = requester)
     request_date = now()
     status = random.choice([x[0] for x in REQUEST_STATUS])
+
 #Todo maybe make this a factoryboy custom fuzzy attr
 adj = ["Epic","Amazing","Thrilling","Subtle","Verbose","Harrowing","Hilarious"]
 noun = ["Adventure","Fantasy","Mystery","History","Story","Tale","Opus","Tome"]
