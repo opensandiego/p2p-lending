@@ -2,7 +2,8 @@ from rest_framework import viewsets,status
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 from .models import Profile,Loan,TitleRequest
-from .serializers import ProfileSerializer,BorrowerLoanSerializer,OwnerLoanSerializer,TitleRequestSerializer
+from .serializers import ProfileSerializer,BorrowerLoanSerializer,OwnerLoanSerializer,TitleRequestSerializer,TitleSerializer
+from rest_framework.decorators import action
 
 
 class ProfileAuthViewMixin(object):
@@ -23,7 +24,7 @@ class ProfileViewSet(viewsets.GenericViewSet,ProfileAuthViewMixin):
         profile = self.get_profile()
     
         if profile == None:
-            return Response({"user":None},status=404)
+            return Response({"user":None},status=status.HTTP_404_NOT_FOUND)
 
         return Response( ProfileSerializer(profile).data )
 
@@ -66,13 +67,20 @@ class UsersTitleRequestsViewSet(viewsets.GenericViewSet,ProfileAuthViewMixin):
         my_requests = self.get_queryset()
         return Response( TitleRequestSerializer(my_requests, many=True, context={'request':request}).data )
 
-class RequestTitleViewSet(viewsets.GenericViewSet,ProfileAuthViewMixin):
-    serializer_class = TitleRequestSerializer
+class AuthenticatedTitleViewSet(viewsets.GenericViewSet,ProfileAuthViewMixin):
+    serializer_class = TitleSerializer
 
     def get_queryset(self):
         return Title.objects.all()
 
-    def post(self, request, *args, **kwargs):
+    @action(detail=True,methods=['post'])
+    def create_titlerequest(self, request, *args, **kwargs):
         print("Got Create TitleRequest",self.request.data) 
-        headers = {}
-        return Response(self.request.data, status=status.HTTP_201_CREATED, headers=headers)
+        profile = self.get_profile()
+        title = self.get_object()
+
+        if profile == None:
+            return Response({"user":None},status=status.HTTP_404_NOT_FOUND)
+
+        return Response({"I":"Did Something!"}, status=status.HTTP_201_CREATED, headers=headers)
+

@@ -10,7 +10,7 @@ router.register(r'current/profile', authenticated_views.ProfileViewSet, 'current
 router.register(r'current/borrowing', authenticated_views.BorrowedLoanViewSet, 'borrowed-loans' )
 router.register(r'current/lending', authenticated_views.OwnerLoanViewSet, 'owner-loans' )
 router.register(r'current/requests', authenticated_views.UsersTitleRequestsViewSet, 'title-requests' )
-router.register(r'request-title', authenticated_views.RequestTitleViewSet, 'request-title' )
+router.register(r'my-titles', authenticated_views.AuthenticatedTitleViewSet, 'my-titles' )
 
 urlpatterns = [
     path('', include(router.urls)),
