@@ -28,7 +28,6 @@ REQUEST_STATUS = (
     ("canceled", "Canceled"),
     ("complete", "Completed"),
 )
-NOTIFY_BY = (("email","email"),("sms","sms"))
 
 class Location(models.Model):
     name = models.CharField(max_length=255) 
@@ -45,7 +44,9 @@ class Profile(models.Model):
     name = models.CharField(max_length=255)
     phone = models.CharField(max_length=64,blank=True)
     email = models.EmailField(null=True,blank=True)
-    notify_by = models.CharField(max_length=8,choices=NOTIFY_BY,blank=True,null=True)
+    email_notifications = models.BooleanField(null=True)
+    sms_notifications = models.BooleanField(null=True)
+    inapp_notifications = models.BooleanField(null=True)
     primary_location = models.ForeignKey(Location,on_delete=models.SET_NULL,null=True)
 
 

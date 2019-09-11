@@ -32,7 +32,9 @@ class ProfileSerializer(serializers.ModelSerializer):
                     'library_card',
                     'phone',
                     'email',
-                    'notify_by',
+                    'email_notifications',
+                    'sms_notifications',
+                    'inapp_notifications',
                     'primary_location',
         )
 
