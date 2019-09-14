@@ -38,7 +38,7 @@ class LendingAPITestCase(TestCase):
         resp = c.get(reverse("current-profile-list"))
         self.assertEqual(resp.status_code,200)
         obj = json.loads(resp.content)
-        self.assertEqua l(obj["name"],profile.name)
+        self.assertEqual(obj["name"],profile.name)
 
     def test_create_title_request(self):
         profile,user,password,c = self.create_user()
