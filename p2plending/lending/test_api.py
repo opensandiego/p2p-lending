@@ -48,3 +48,7 @@ class LendingAPITestCase(TestCase):
         c.login(username=user.username,password=password)
         resp = c.post(reverse("my-titles-create-titlerequest",args=(title.id,)))
         self.assertEqual(resp.status_code,201)
+
+        obj = json.loads(resp.content)
+        print("New title request",obj)
+        self.assertEqual( obj['title']['id'], title.id )
