@@ -1,7 +1,7 @@
 from rest_framework import viewsets,status
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
-from .models import Profile,Loan,TitleRequest
+from .models import Profile,Loan,TitleRequest,Title
 from .serializers import ProfileSerializer,BorrowerLoanSerializer,OwnerLoanSerializer,TitleRequestSerializer,TitleSerializer
 from rest_framework.decorators import action
 
@@ -75,12 +75,10 @@ class AuthenticatedTitleViewSet(viewsets.GenericViewSet,ProfileAuthViewMixin):
 
     @action(detail=True,methods=['post'])
     def create_titlerequest(self, request, *args, **kwargs):
-        print("Got Create TitleRequest",self.request.data) 
         profile = self.get_profile()
         title = self.get_object()
 
         if profile == None:
             return Response({"user":None},status=status.HTTP_404_NOT_FOUND)
-
-        return Response({"I":"Did Something!"}, status=status.HTTP_201_CREATED, headers=headers)
+        return Response(TitleRequestSerializer(title.create_request(profile)).data, status=status.HTTP_201_CREATED)
 
