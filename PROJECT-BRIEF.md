@@ -49,6 +49,7 @@ The Linda Vista Library is looking to explore a Peer-to-Peer lending program, fa
 - [Nick Engmann](https://github.com/NickEngmann)
 - [Nikolaj Baer](https://github.com/nikolajbaer/)
 - [Jeffrey Davis - Linda Vista Library Branch Manager](https://www.sandiego.gov/public-library/locations/linda-vista-library)
+- [Bolun Thompson](https://github.com/BolunThompson)
 - We're looking for additional team members. Please reach out to us on #peer-to-peer-lending on opensandiego.slack.com
 
 ### <a name="section_similar"></a>Similar projects and models
