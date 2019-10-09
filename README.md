@@ -34,10 +34,10 @@ To run the backend you are going to need to create a virtual environment
 > ./manage.py runserver
 ~~~~~
 
-You can also generate backend test data by running the following command:
+You can also generate backend test data by running the following command. The "--loans-and-requests" part is to optionally generate loans and title requests:
 
 ~~~~~
-> ./manage.py generate_test_data 100
+> ./manage.py generate_test_data 100 --loans-and-requests
 ~~~~~
 
 You can also create a superuser account to manage the backend
