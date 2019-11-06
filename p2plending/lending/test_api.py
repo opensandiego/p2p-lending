@@ -46,6 +46,7 @@ class LendingAPITestCase(TestCase):
         self.assertTrue(title.available_items().count() >= 1)
 
         c.login(username=user.username,password=password)
+
         resp = c.post(reverse("my-titles-create-titlerequest",args=(title.id,)))
         self.assertEqual(resp.status_code,201)
 

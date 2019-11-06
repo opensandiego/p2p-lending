@@ -87,3 +87,4 @@ class AuthenticatedTitleViewSet(viewsets.GenericViewSet,ProfileAuthViewMixin):
             status=status.HTTP_201_CREATED
         )
 
+
