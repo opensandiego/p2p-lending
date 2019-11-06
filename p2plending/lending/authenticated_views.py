@@ -80,6 +80,11 @@ class AuthenticatedTitleViewSet(viewsets.GenericViewSet,ProfileAuthViewMixin):
 
         if profile == None:
             return Response({"user":None},status=status.HTTP_404_NOT_FOUND)
-        return Response(TitleRequestSerializer(title.create_request(profile)).data, status=status.HTTP_201_CREATED)
+
+        new_title_request = title.create_request(profile)
+        return Response(
+            TitleRequestSerializer(new_title_request).data, 
+            status=status.HTTP_201_CREATED
+        )
 
 

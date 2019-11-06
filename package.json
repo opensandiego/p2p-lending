@@ -1,0 +1,7 @@
+{
+    "name": "p2p-lending-build",
+    "version": "0.1.0",
+    "scripts":{
+        "postinstall": "npm install --dev --prefix p2plending/frontend && npm run build --prefix p2plending/frontend --dev"
+    }
+}
